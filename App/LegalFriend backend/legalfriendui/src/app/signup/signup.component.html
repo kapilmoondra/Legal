@@ -1,0 +1,121 @@
+
+<div class="wrapper-page animated fadeInDown">
+    <div class="panel panel-color panel-primary">
+        <div class="panel-heading"> 
+           <h3 class="text-center m-t-10"> Create a new Account </h3>
+        </div> 
+
+        <form class="form-horizontal m-t-40" [formGroup]="myForm">                          
+
+            <div class="form-group">
+                    <div class="col-xs-12">
+                        <input class="form-control" type="text" required="" placeholder="First Name" 
+                        id="firstName"                          
+                        [formControl]="myForm.controls['firstName']">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                        <div class="col-xs-12">
+                            <input class="form-control" type="text" required="" placeholder="Last Name" 
+                            id="lastName"                                
+                            formControlName="lastName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" required="" placeholder="Mobile Number" 
+                                id="mobileNumber"                     
+                                formControlName="mobileNumber">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                                <div class="col-xs-12">
+                                    <input class="form-control" type="text" required="" placeholder="Organization" 
+                                    id="organization"                     
+                                    formControlName="organization">
+                                </div>
+                            </div> 
+                        <div class="form-group" formGroupName="address">
+                                <div class="col-xs-12">
+                                    <input class="form-control" type="text" required="" placeholder="Address1" 
+                                    id="address1"                     
+                                    formControlName="address1">
+                                </div>
+                            </div>
+                            <div class="form-group" formGroupName="address">
+                                    <div class="col-xs-12">
+                                        <input class="form-control" type="text" required="" placeholder="Address2" 
+                                        id="address2"                     
+                                        formControlName="address2">
+                                    </div>
+                                </div>
+                                <div class="form-group" formGroupName="address">
+                                        <div class="col-xs-12">
+                                            <input class="form-control" type="text" required="" placeholder="City" 
+                                            id="city"                     
+                                            formControlName="city">
+                                        </div>
+                                    </div>
+                                    <div class="form-group" formGroupName="address">
+                                            <div class="col-xs-12">
+                                                <input class="form-control" type="text" required="" placeholder="State" 
+                                                id="state"                     
+                                                formControlName="state">
+                                            </div>
+                                        </div>
+                                        <div class="form-group" formGroupName="address">
+                                                <div class="col-xs-12">
+                                                    <input class="form-control" type="text" required="" placeholder="Zip Code" 
+                                                    id="zipCode"                     
+                                                    formControlName="zipCode">
+                                                </div>
+                                            </div>
+                    <div class="form-group">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="email" required="" placeholder="Email" 
+                                id="email"                                  
+                                formControlName="email">
+                            </div>
+                        </div>
+            
+            <div class="form-group ">
+                <div class="col-xs-12">
+                    <input class="form-control " type="text" required="" placeholder="Username" 
+                    id="username"                      
+                    formControlName="username">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <input class="form-control " type="password" required="" placeholder="password"
+                      id="password" formControlName="password">
+                </div>
+            </div>
+
+            <div class="form-group ">
+                <div class="col-xs-12">
+                    <label class="cr-styled">
+                        <input type="checkbox" checked>
+                        <i class="fa"></i> 
+                         I accept <strong><a href="#">Terms and Conditions</a></strong>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="form-group text-right">
+                <div class="col-xs-12">
+                    <button class="btn btn-purple w-md" type="button" (click)="save(myForm.value, myForm.valid)">Register</button>
+                </div>
+            </div>
+
+            <div class="form-group m-t-30">
+                <div class="col-sm-12 text-center">                        
+                    <span (click)="login()"><a>Already have account?</a></span>
+                </div>
+            </div>
+        </form>  
+        <!-- demo-->        
+   </div>
+</div>

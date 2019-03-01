@@ -1,0 +1,141 @@
+<div class="modal fade" id="editComplianceMasterModal">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius: 5px;">
+      <div class="modal-header modal-header-addedit">
+        <button type="button" id="closebtn" class="close close-addedit" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Edit Compliance</h4>
+      </div>
+      <div style="width:120px;height:10%;background-color:black;"></div>
+      <div class="modal-body modal-body-adedit" style="margin-top: -15px;">
+        <!-- Edit Case Starts -->
+        <div class="row">
+          <!-- <div class="col-md-12"> -->
+          <input type="hidden" name="base_url" id="base_url" value="http://legalfriend.infinityfreeapp.com/">
+          <div>
+            <div class="box-body widget-content">
+              <form [formGroup]="editComplianceMasterForm" class="form-horizontal" (ngSubmit)="submitEditComplianceMaster(editComplianceMasterForm.value)">
+                <div class="form-body">
+                  <div class="tab-content">
+                    <div class="tab-pane active">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label createUserLabel">Recourse:
+                          <em class="astrick">*</em>
+                        </label>
+                        <div class="col-md-9">
+                          <!-- <input class="form-control" placeholder="Manager" formControlName="manager"> -->
+                          <select id="ddlRecourse" [(ngModel)]="selectedRecourse" tabindex="3" class="form-control select2me" formControlName="recourse"
+                            (ngModelChange)="changeRecourse($event)">
+                            <option value="">Select Recourse</option>
+                            <option *ngFor="let option of arRecourse" [ngValue]="option" [selected]="selectedRecourse && option.id === selectedRecourse.id">
+                              {{ option.recourseName }}
+                            </option>
+                          </select>
+                        </div>
+                        <div class="col-sm-9 valodation-padding" *ngIf="editComplianceMasterForm.get('recourse').invalid &&  editComplianceMasterForm.get('recourse').touched">
+                          <small class="text-danger">
+                            <span>Recourse is required.</span>
+                          </small>
+
+                        </div>
+
+                      </div>
+                      <div class="form-group row" *ngIf="arStage.length > 0">
+                        <label class="col-sm-3 col-form-label createUserLabel">Stage:
+                          <em class="astrick">*</em>
+                        </label>
+                        <div class="col-md-9">
+                          <select [(ngModel)]="selectedStage"  name="stage" tabindex="3" class="form-control select2me" formControlName="stage">
+                            <option value="">Select Stage</option>
+                            <option *ngFor="let option of arStage" [ngValue]="option" [selected]="selectedStage && option.id == selectedStage.id">
+                              {{ option.stageName }}
+                            </option>
+                          </select>
+                        </div>
+
+                        <div class="col-sm-9 valodation-padding" *ngIf="editComplianceMasterForm.get('stage').invalid &&  editComplianceMasterForm.get('stage').touched">
+                          <small class="text-danger">
+                            <span>Stage is required.</span>
+                          </small>
+
+                        </div>
+
+
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label createUserLabel">Compliance:
+                          <em class="astrick">*</em>
+                        </label>
+                        <div class="col-md-9" [class.has-error]="editComplianceMasterForm.get('compliance').invalid &&  editComplianceMasterForm.get('compliance').touched">
+                          <input class="form-control" placeholder="Complaince" formControlName="compliance">
+                        </div>
+                        <div class="col-sm-9 valodation-padding" *ngIf="editComplianceMasterForm.get('compliance').invalid &&  editComplianceMasterForm.get('compliance').touched">
+                          <small class="text-danger">
+                            <span>Compliance is required.</span>
+                          </small>
+
+                        </div>
+
+                        <div class="col-sm-9 valodation-padding" *ngIf="isComplianceAlreadyExists">
+                          <small class="text-danger">
+                            <span>Compliance already exists.</span>
+                          </small>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label createUserLabel">Status:
+                          <em class="astrick">*</em>
+                        </label>
+                        <div class="col-md-9">
+                          <!-- <input class="form-control" placeholder="Manager" formControlName="manager"> -->
+                          <select [(ngModel)]="selectedStatus" name="Status" tabindex="3" class="form-control select2me" formControlName="status">
+                            <option value="">Select Status</option>
+                            <option *ngFor="let option of arStatus" [ngValue]="option" [selected]="selectedStatus && option.statusId == selectedStatus.statusId">
+                              {{ option.statusName }}
+                            </option>
+
+                          </select>
+                        </div>
+
+                        <div class="col-sm-9 valodation-padding" *ngIf="editComplianceMasterForm.get('status').invalid &&  editComplianceMasterForm.get('status').touched">
+                          <small class="text-danger">
+                            <span>Status is required.</span>
+                          </small>
+
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-4">
+                          <!-- <button type="submit" [disabled]="signupForm.invalid" class="btn green button-submit">
+                            Submit
+                            <i class="m-icon-swapright m-icon-white"></i>
+                          </button> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer modal-footer-addedit">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="submit" [disabled]="editComplianceMasterForm.invalid || isComplianceAlreadyExists" class="btn btn-modal-addedit">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- </div> -->
+        </div>
+        <!-- Create User ends -->
+      </div>
+      <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="submit" [disabled]="signupForm.invalid" class="btn btn-primary">Submit</button>
+                
+              </div> -->
+
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+
+</div>

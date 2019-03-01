@@ -1,0 +1,244 @@
+<head>
+        <meta charset="utf-8">        
+        <title>Icon</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            .main-area{
+                min-height: 500px;
+            }
+            .favicon{
+                position: fixed;
+                right: 50px;
+                bottom: 50px;
+                z-index: 3000;
+                border-radius: 50%;
+            }
+            .favicon a{
+               height: 47px;
+				width: 51px;
+				line-height: 49px;
+                background: #cc0000;
+                display: block;
+                border-radius: 50%;
+                color: #fff;
+                text-align: center;
+                font-size: 24px;
+                box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.2);
+            }
+            .favicon:hover a {
+                box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
+                opacity: .8;
+            }
+            .favicon .tooltip{
+                position: absolute;
+                right: 0;
+                top: 25px;
+                max-width: 200px;
+                font-family:arial;
+                font-size: 11px;
+                opacity: 0;
+            }
+            .favicon .tooltip-text{
+                background: #333;
+                line-height: 1em;
+                overflow: hidden;
+                padding: 6px 8px;
+                color: #fff;
+                text-overflow: ellipsis;
+                vertical-align: middle;
+                white-space: nowrap;
+            }
+            .favicon:hover .tooltip{
+                opacity: 1;
+                right: 70px;
+                transition: all 120ms cubic-bezier(0.25, 0.25, 0, 1);
+            } 
+        
+        </style>
+    </head>
+<div class="wraper container-fluid">
+    <div class="page-title"> 
+        <h3 class="title">User Management</h3>
+    </div>   
+		
+    <div class="wraper container-fluid">
+        <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Users</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>                                            
+                                            <th>Name</th>                                            
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Status</th>
+											<th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let user of users" >
+                                           <td>{{user.firstName}} {{user.lastName}}</td>                                           
+                                           <td>{{user.email}}</td>
+                                           <td>{{user.mobileNumber}}</td>
+                                           <td>{{user.status}}</td>                                          
+                                           <td><button class="btn btn-primary" data-toggle="modal" data-target="#con-close-modal">Edit</button>
+                                            |<button class="btn btn-primary" data-toggle="modal" data-target="#con-close-modal">Remove</button>
+                                          </td>
+                                        </tr>                                        
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                            <div class="modal-dialog"> 
+                                <div class="modal-content"> 
+                                    <div class="modal-header"> 
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
+                                        <h4 class="modal-title">Edit User</h4> 
+                                    </div> 
+                                    <div class="modal-body">
+                                            <form class="form-horizontal" [formGroup]="myForm">                                    
+                                        <div class="row"> 
+                                            <div class="col-md-6"> 
+                                                <div class="form-group"> 
+                                                    <label class="control-label">First Name</label> 
+                                                     <input class="form-control" type="text" required="" placeholder="First Name" 
+                        id="firstName"                          
+                        [formControl]="myForm.controls['firstName']">
+                                                </div> 
+                                            </div> 
+                                            <div class="col-md-6"> 
+                                                <div class="form-group"> 
+                                                    <label for="field-2" class="control-label">Last Name</label> 
+                                                    <input class="form-control" type="text" required="" placeholder="Last Name" 
+                            id="lastName"                                
+                            formControlName="lastName">
+                                                </div> 
+                                            </div> 
+                                        </div>
+										<div class="row"> 
+                                            <div class="col-md-6"> 
+                                                <div class="form-group" formGroupName="address"> 
+                                                    <label for="field-1" class="control-label">Address1</label> 
+                                                    <input class="form-control" type="text" required="" placeholder="Address1" 
+                                                    id="address1"                     
+                                                    formControlName="address1">
+                                                </div> 
+                                            </div> 
+                                            <div class="col-md-6"> 
+                                                <div class="form-group" formGroupName="address"> 
+                                                    <label for="field-2" class="control-label">Address2</label> 
+                                                    <input class="form-control" type="text" required="" placeholder="Address2" 
+                                                    id="address2"                     
+                                                    formControlName="address2">
+                                                </div> 
+                                            </div> 
+                                        </div>
+										<div class="row"> 
+                                            <div class="col-md-4"> 
+                                                <div class="form-group" formGroupName="address"> 
+                                                    <label for="field-1" class="control-label">City</label> 
+                                                    <input class="form-control" type="text" required="" placeholder="City" 
+                                                    id="city"                     
+                                                    formControlName="city">
+                                                </div> 
+                                            </div> 
+                                            <div class="col-md-4"> 
+                                                <div class="form-group" formGroupName="address"> 
+                                                    <label for="field-2" class="control-label">State</label> 
+                                                    <input class="form-control" type="text" required="" placeholder="State" 
+                                                    id="state"                     
+                                                    formControlName="state">
+                                                </div> 
+                                            </div>
+ <div class="col-md-4"> 
+                                                <div class="form-group" formGroupName="address"> 
+                                                    <label for="field-2" class="control-label">ZipCode</label> 
+                                                    <input class="form-control" type="text" required="" placeholder="Zip Code" 
+                                                    id="zipCode"                     
+                                                    formControlName="zipCode">
+                                                </div> 
+                                            </div>											
+                                        </div>
+                                         
+                                        <div class="row"> 
+                                            <div class="col-md-4"> 
+                                                <div class="form-group"> 
+                                                    <label for="field-4" class="control-label">Email</label> 
+                                                    <input class="form-control" type="email" required="" placeholder="Email" 
+                                id="email"                                  
+                                formControlName="email">
+                                                </div> 
+                                            </div> 
+                                            <div class="col-md-4"> 
+                                                <div class="form-group"> 
+                                                    <label for="field-5" class="control-label">Username</label> 
+                                                     <input class="form-control " type="text" required="" placeholder="Username" 
+                    id="username"                      
+                    formControlName="username">
+                                                </div> 
+                                            </div> 
+                                            <div class="col-md-4"> 
+                                                <div class="form-group"> 
+                                                    <label for="field-6" class="control-label">Password</label> 
+                                                    <input class="form-control " type="password" required="" placeholder="password"
+                      id="password" formControlName="password"> 
+                                                </div> 
+                                            </div> 
+                                        </div>
+										<div class="row"> 
+                                            <div class="col-md-6"> 
+                                                <div class="form-group"> 
+                                                    <label for="field-1" class="control-label">Status</label> 
+                                                     <!-- <select class="form-control" id="status" formControlName="statusId">
+                         <option *ngFor="let status of statusList"
+                          value= {{status.statusId}}>
+                             {{status.statusName}}
+                        </option>
+                     </select> -->
+                                                </div> 
+                                            </div> 
+                                            <div class="col-md-6"> 
+                                                <div class="form-group"> 
+                                                    <label for="field-2" class="control-label">Role</label> 
+                                                    <!-- <select id="role">
+                        <option *ngFor="let status of statusList"
+                          value= {{status.statusId}}>
+                             {{status.statusName}}
+                        </option>
+                     </select> -->
+                                                </div> 
+                                            </div> 
+                                        </div>                                    
+                                       </form>   
+                                           
+                                            
+                                    </div> 
+                                    <div class="modal-footer"> 
+                                        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button> 
+                                        <button type="button" class="btn btn-info">Save changes</button> 
+                                    </div> 
+                                </div> 
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>      
+    </div>
+	  <div class="main-area"></div>
+       <div class="favicon">
+          <div  class="tooltip bg-black text-white font-size-12 padding-5 border-radius-3 fw-700">
+              <span class="tooltip-text">Add User</span>
+			</div>
+           <a routerLink="adduser"><i class="fa fa-plus"></i></a>
+       </div>

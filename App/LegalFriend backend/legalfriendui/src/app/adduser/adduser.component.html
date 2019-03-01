@@ -1,0 +1,230 @@
+<head>
+        <meta charset="utf-8">        
+        <title>Icon</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            .main-area{
+                min-height: 500px;
+            }
+            .favicon{
+                position: fixed;
+                right: 50px;
+                bottom: 50px;
+                z-index: 3000;
+                border-radius: 50%;
+            }
+            .favicon a{
+               height: 47px;
+				width: 51px;
+				line-height: 49px;
+                background: #cc0000;
+                display: block;
+                border-radius: 50%;
+                color: #fff;
+                text-align: center;
+                font-size: 24px;
+                box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.2);
+            }
+            .favicon:hover a {
+                box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
+                opacity: .8;
+            }
+            .favicon .tooltip{
+                position: absolute;
+                right: 0;
+                top: 25px;
+                max-width: 200px;
+                font-family:arial;
+                font-size: 11px;
+                opacity: 0;
+            }
+            .favicon .tooltip-text{
+                background: #333;
+                line-height: 1em;
+                overflow: hidden;
+                padding: 6px 8px;
+                color: #fff;
+                text-overflow: ellipsis;
+                vertical-align: middle;
+                white-space: nowrap;
+            }
+            .favicon:hover .tooltip{
+                opacity: 1;
+                right: 70px;
+                transition: all 120ms cubic-bezier(0.25, 0.25, 0, 1);
+            } 
+			.glyphicon {
+				position: relative;
+				top: 1px;
+				display: inline-block;
+				font-family: 'Glyphicons Halflings';
+				font-style: normal;
+				font-weight: 400;
+				line-height: 1;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+			.glyphicon-eye-open               { &:before { content: "\e105"; } }
+            .wrapper-page {
+                width: auto;
+                margin: 0px auto 0px;
+              }
+              body{
+              color: #797979;
+              background-color: #edf0f0;
+              font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+              padding: 0px !important;
+              margin: 0px !important;
+              font-size: 14px;
+          } 
+          .panel-heading{
+            color: #797979;             
+          }         
+        </style>
+    </head>
+
+<div class="wrapper-page animated fadeInDown">
+    <div class="panel panel-color panel-primary">
+        <div class="panel-heading"> 
+           <h3 class="text-center m-t-10">Add User</h3>
+        </div> 
+
+        <form class="form-horizontal m-t-40" [formGroup]="myForm">                          
+
+            <div class="form-group">
+                    <label class="col-xs-2 control-label">First Name:<em>*</em></label>                        
+                    <div class="col-xs-6">                            
+                        <input class="form-control" type="text" required="" placeholder="First Name" 
+                        id="firstName"                          
+                        [formControl]="myForm.controls['firstName']">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                        <label class="col-xs-2 control-label">Last Name:<em>*</em></label>                        
+                    <div class="col-xs-6">                            
+                            <input class="form-control" type="text" required="" placeholder="Last Name" 
+                            id="lastName"                                
+                            formControlName="lastName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                            <label class="col-xs-2 control-label">Mobile No:<em>*</em></label>                        
+                            <div class="col-xs-6">                            
+                                <input class="form-control" type="text" required="" placeholder="Mobile Number" 
+                                id="mobileNumber"                     
+                                formControlName="mobileNumber">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                                <label class="col-xs-2 control-label">Organization:<em>*</em></label>                        
+                                <div class="col-xs-6">                            
+                                    <input class="form-control" type="text" required="" placeholder="Organization" 
+                                    id="organization"                     
+                                    formControlName="organization">
+                                </div>
+                            </div> 
+                        <div class="form-group" formGroupName="address">
+                                <label class="col-xs-2 control-label">Address1:<em>*</em></label>                        
+                                <div class="col-xs-6">                            
+                                    <input class="form-control" type="text" required="" placeholder="Address1" 
+                                    id="address1"                     
+                                    formControlName="address1">
+                                </div>
+                            </div>
+                            <div class="form-group" formGroupName="address">
+                                    <label class="col-xs-2 control-label">Address2:<em>*</em></label>                        
+                                    <div class="col-xs-6">                            
+                                        <input class="form-control" type="text" required="" placeholder="Address2" 
+                                        id="address2"                     
+                                        formControlName="address2">
+                                    </div>
+                                </div>
+                                <div class="form-group" formGroupName="address">
+                                        <label class="col-xs-2 control-label">City:<em>*</em></label>                        
+                                        <div class="col-xs-6">                            
+                                            <input class="form-control" type="text" required="" placeholder="City" 
+                                            id="city"                     
+                                            formControlName="city">
+                                        </div>
+                                    </div>
+                                    <div class="form-group" formGroupName="address">
+                                            <label class="col-xs-2 control-label">State:<em>*</em></label>                        
+                                            <div class="col-xs-6">                            
+                                                <input class="form-control" type="text" required="" placeholder="State" 
+                                                id="state"                     
+                                                formControlName="state">
+                                            </div>
+                                        </div>
+                                        <div class="form-group" formGroupName="address">
+                                                <label class="col-xs-2 control-label">Zip Code:<em>*</em></label>                        
+                                                <div class="col-xs-6">                            
+                                                    <input class="form-control" type="text" required="" placeholder="Zip Code" 
+                                                    id="zipCode"                     
+                                                    formControlName="zipCode">
+                                                </div>
+                                            </div>
+                    <div class="form-group">
+                            <label class="col-xs-2 control-label">Email:<em>*</em></label>                        
+                            <div class="col-xs-6">                            
+                                <input class="form-control" type="email" required="" placeholder="Email" 
+                                id="email"                                  
+                                formControlName="email">
+                            </div>
+                        </div>
+            
+            <div class="form-group ">
+                    <label class="col-xs-2 control-label">Username:<em>*</em></label>                        
+                    <div class="col-xs-6">                            
+                    <input class="form-control " type="text" required="" placeholder="Username" 
+                    id="username"                      
+                    formControlName="username">
+                </div>
+            </div>
+
+            <div class="form-group">
+                    <label class="col-xs-2 control-label">Password:<em>*</em></label>                        
+                    <div class="col-xs-6">                            
+                    <input class="form-control " type="password" required="" placeholder="password"
+                      id="password" formControlName="password">
+                </div>
+            </div>
+             <div class="form-group" formGroupName="status">
+                    <label class="col-xs-2 control-label">Status:<em>*</em></label>                        
+                    <div class="col-xs-6">                            
+                    <select class="form-control" id="status" formControlName="statusId">
+                        <option *ngFor="let status of statusList"
+                          value= {{status.statusId}}>
+                             {{status.statusName}}
+                        </option>
+                     </select>                     
+                </div>
+            </div>
+            <div class="form-group">
+                    <label class="col-xs-2 control-label">Role:<em>*</em></label>                        
+                    <div class="col-xs-6">                            
+                    <select id="role">
+                        <option *ngFor="let status of statusList"
+                          value= {{status.statusId}}>
+                             {{status.statusName}}
+                        </option>
+                     </select>                     
+                </div>
+            </div>                                    
+            
+            <div class="form-group text-right">
+                <div class="col-xs-8">
+                    <button class="btn btn-purple w-md" type="button" (click)="save(myForm.value, myForm.valid)">Add</button>
+                </div>
+            </div>           
+        </form>  
+        <!-- demo-->        
+   </div>
+</div>
+	  <div class="main-area"></div>
+       <div class="favicon">
+          <div  class="tooltip bg-black text-white font-size-12 padding-5 border-radius-3 fw-700">
+              <span class="tooltip-text">View User</span>
+			</div>
+           <a routerLink="/../home"><i class="glyphicon glyphicon-eye-open"></i></a>
+       </div>

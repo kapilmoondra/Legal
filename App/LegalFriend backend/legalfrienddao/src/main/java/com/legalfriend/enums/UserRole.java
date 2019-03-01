@@ -1,0 +1,5 @@
+package com.legalfriend.enums;
+
+public enum UserRole {
+	ADMIN, MANAGER, EMPLOYEE, CLIENT, CUSTOMER_INDIVIDUAL_CLIENT, CUSTOMER_ORG_CLIENT, CUSTOMER
+}

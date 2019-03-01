@@ -1,0 +1,7 @@
+com\legalfriend\webserviceprocessor\UserWebServiceProcessorImpl.class
+com\legalfriend\model\User.class
+com\legalfriend\model\UserAddress.class
+com\legalfriend\model\UserRole.class
+com\legalfriend\rest\Application.class
+com\legalfriend\webserviceprocessor\UserWebServiceProcessor.class
+com\legalfriend\rest\UserController.class

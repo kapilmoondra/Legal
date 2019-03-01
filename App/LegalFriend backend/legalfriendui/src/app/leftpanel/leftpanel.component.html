@@ -1,0 +1,106 @@
+<!-- Aside Start-->
+<aside class="left-panel">
+    
+
+    <!-- brand -->
+    <div class="logo">
+        <a class="logo-expanded">
+            <img src="/src/img/logo.png" alt="logo" style="width: 100px;">
+            <!-- <span class="nav-label">LegalFriend</span> -->
+        </a>
+    </div>
+    <!-- / brand -->
+
+    <!-- Navbar Start -->
+    <nav class="navigation">
+        <ul class="list-unstyled">
+            <li (click)="home();" class="has-submenu active">
+                    <!-- <li routerLink="home" class="has-submenu active"> -->
+                <a>
+                    <i class="ion-home"></i>
+                    <span class="nav-label">User Management</span>
+                </a>
+            </li>
+            <li class="has-submenu">
+                <a>
+                    <i class="ion-flask"></i>
+                    <span class="nav-label">Case Management</span>
+                </a>
+                <ul class="list-unstyled">
+                    <li routerLink="cases" >
+                        <a>Cases</a>
+                    </li>
+                    <li routerLink="completedcases">
+                        <a>Completed cases</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="has-submenu">
+                <a href="#">
+                    <i class="ion-settings"></i>
+                    <span class="nav-label">Master Management</span>
+                </a>
+                <ul class="list-unstyled">
+                    <li routerLink="city">
+                        <a>City</a>
+                    </li>
+                    <li routerLink="district">
+                        <a>District</a>
+                    </li>
+                    <li routerLink="state">
+                        <a>State</a>
+                    </li>
+                    <li routerLink="court">
+                        <a>Court</a>
+                    </li>
+                    <li routerLink="recoursecode">
+                        <a>Recourse Code</a>
+                    </li>
+                    <li routerLink="stagecode">
+                        <a>Stage Code</a>
+                    </li>
+                    <li routerLink="compliance">
+                        <a>Compliance</a>
+                    </li>
+                    <li routerLink="branch">
+                        <a>Branch</a>
+                    </li>
+                    <li routerLink="organizaton">
+                        <a>Organization</a>
+                    </li>
+                    <li routerLink="billing">
+                        <a>Billing</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="has-submenu">
+                <a href="#">
+                    <i class="ion-compose"></i>
+                    <span class="nav-label">Billing</span>
+                </a>
+                <ul class="list-unstyled">
+                    <li routerLink="billinglist">
+                        <a>Billing List</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="has-submenu">
+                <a href="#">
+                    <i class="ion-grid"></i>
+                    <span class="nav-label">Organization</span>
+                </a>
+                <ul class="list-unstyled">
+                    <li routerLink="againstorganization">
+                        <a>Against Organization</a>
+                    </li>
+                    <li routerLink="fororganization">
+                        <a>For Organization</a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </nav>
+</aside>
+
+<!-- Aside Ends-->

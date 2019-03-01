@@ -1,0 +1,9 @@
+com\legalfriend\business\UserBusinessProcessorImpl.class
+com\legalfriend\business\UserBusinessProcessor.class
+com\legalfriend\model\User.class
+com\legalfriend\webserviceprocessor\UserWebServiceDAOProcessorImpl.class
+com\legalfriend\model\UserAddress.class
+com\legalfirend\Application.class
+com\legalfriend\model\UserRole.class
+com\legalfriend\webserviceprocessor\UserWebServiceDAOProcessor.class
+com\legalfriend\rest\UserController.class

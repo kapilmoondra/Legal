@@ -1,0 +1,95 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <!-- Main content -->
+  <div class="page-heading">
+    Master Management
+  </div>
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+
+        <!-- /.box -->
+
+        <div class="box">
+          <!-- <div class="box-header">
+              <h3 class="box-title">Data Table With Full Features</h3>
+            </div> -->
+          <!-- /.box-header -->
+          <div class="box-body">
+              <app-data-table #dataTable [tableData]="tableInputData" [tableColumns]="columns" (rowClick)="onRowClick($event)" (rowDoubleClick)="onRowDoubleClick($event)"
+              (selectedRows)="onRowSelect($event)" [showRowSelect]="rowSelect" [hoverTableRow]="hoverTableRow" [actionColumnConfig]="actionColumnConfig" (actionBtnClick)="onActionBtnClick($event)">
+            </app-data-table>
+            <!-- <div>
+              <div class="row table-toolbar">
+                <div class="col-sm-4 heading">Institutions</div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-2">
+                  <label class="custom-label">Show
+                    <select class="input-sm" id="ddlLengthMenu">
+                    </select> rows
+                  </label>
+                </div>
+                <div class="col-sm-2">
+                  <input type="text" id="txtSearch" class="input-sm custom-search" placeholder="Search...">
+                </div>
+              </div>
+            </div> -->
+            <!-- <table id="example1" class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>Institution Name</th>
+                  <th>Contact Person</th>
+                  <th>Address</th>
+                  <th>City</th>
+                  <th>Contact No.</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of tableInputData" (dblclick)="showEditModal(item)" data-target="#editInstitutionMasterModal">
+                  <td>{{item.institutionName}}</td>
+                  <td>{{item.contactPerson}}</td>
+                  <td>{{item.address}}</td>
+                  <td>{{item.city}}</td>
+                  <td>{{item.contactNo}}</td>
+
+                  <td>
+                    <a title="Edit" (click)="showEditModal(item)">
+                      <i class="fa fa-edit"></i>
+                      <span> / </span>                     
+                    </a>
+                    
+                    <button *ngIf="!item.defaultInstitution" class="btn btn-primary" (click)="MakeDefault(item)">Make Default</button>
+                    <span *ngIf="item.defaultInstitution" class="btn btn-primary" style="background: green; cursor: default;">Default</span>
+                  </td>
+
+                </tr>
+                <tr *ngIf="!arr || arr.length==0">
+                  <td colspan="2"> No Record Found...!</td>
+                </tr>
+
+              </tbody>
+
+            </table> -->
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+  <div class="favicon" data-toggle="modal" data-target="#addInstitutionMasterModal">
+    <div class="tooltip bg-black text-white font-size-12 padding-5 border-radius-3 fw-700">
+      <span class="tooltip-text">Add Institution</span>
+    </div>
+    <a>
+      <i class="fa fa-plus" type="button"></i>
+    </a>
+  </div>
+  <app-add-institution [tableInputData]="tableInputData" [arCity]="arCity" [dataTableComponent]="dataTableComponent"></app-add-institution>
+  <app-edit-institution [arCity]="arCity" [tableInputData]="tableInputData"></app-edit-institution>
+</div>

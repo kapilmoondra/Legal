@@ -1,0 +1,41 @@
+#invoiceTable .mat-column-institutionName {
+    flex: 0 0 10% !important;
+  }
+#invoiceTable .mat-column-description {
+    flex: 0 0 50% !important;
+  }
+  #invoiceTable .mat-column-amount {
+    flex: 0 0 10% !important;
+  }
+  #invoiceTable .mat-column-status {
+    flex: 0 0 10% !important;
+  }
+  #invoiceTable .mat-column-invoiceDate {
+    flex: 0 0 10% !important;
+  }
+#invoiceTable .mat-cell-text{
+    max-width: 600px !important
+}
+#invoiceTable .mat-column-action{
+  flex: 0 0 150px !important;
+}
+
+.custom-table {
+   
+  border-collapse: collapse;
+
+}
+
+custom-table td, custom-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+
+custom-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}

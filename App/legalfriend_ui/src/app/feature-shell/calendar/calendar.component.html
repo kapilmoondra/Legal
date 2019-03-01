@@ -1,0 +1,65 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Calendar
+    </h1>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-md-3">
+        <!-- /. box -->
+        <div class="box box-solid">
+          <div class="box-header with-border">
+            <h3 class="box-title">Create Event</h3>
+          </div>
+          <div class="box-body">
+            <!-- /btn-group -->
+            <div class="input-group">
+              <input id="new-event" type="text" class="form-control" placeholder="Event Title">
+
+              <div class="input-group-btn">
+                <button id="add-new-event" type="button" class="btn btn-primary btn-flat" [style.backgroundColor]="getEventBgColor(convertToEventType(null))"
+                  [style.border-color]="getEventBgColor(convertToEventType(null))">Add</button>
+              </div>
+              <!-- /btn-group -->
+            </div>
+            <!-- /input-group -->
+          </div>
+
+          <div id="external-events" style="padding: 0px 17px 0px 17px;">
+            <div>&nbsp;</div>
+          </div>
+        </div>
+
+        <div class="box box-solid">
+          <div class="box-header with-border">
+            <h3 class="box-title">Upcoming Events</h3>
+          </div>
+          <div class="box-body" [ngClass]="{'scroll-upcoming':arUpcomingEvents && arUpcomingEvents.length>15}">
+            <div class="external-event" *ngFor="let item of arUpcomingEvents" [style.background-color]="item.backgroundColor" [style.color]="item.color"
+              [style.border-color]="item.borderColor" title="{{item.title}}">
+              {{item.startDate | date: 'dd-MMM-yyyy'}}, {{item.title}}</div>
+          </div>
+        </div>
+      </div>
+      <!-- /.col -->
+      <div class="col-md-9">
+        <div class="box box-primary">
+          <div class="box-body no-padding">
+            <!-- THE CALENDAR -->
+            <div id="calendar"></div>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /. box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

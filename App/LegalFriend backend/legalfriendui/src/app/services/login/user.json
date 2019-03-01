@@ -1,0 +1,12 @@
+{
+	"email": "kaushal.ng3",
+	"organization": "gl",
+	"password": "kaushal@1234",
+	"firstName": "kaushalNand",
+	"lastName": "Gairola",
+	"login" : {
+		"userLoginId" : "kaushal.ng3",
+		"password" : "kaushal@1234"
+	},
+	"isClient" : true
+}

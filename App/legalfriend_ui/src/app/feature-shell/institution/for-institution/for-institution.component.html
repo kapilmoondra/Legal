@@ -1,0 +1,150 @@
+<div id="divContentInstitution" class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <!-- Main content -->
+  <div class="page-heading">
+    <span *ngIf="!isAgainstInstitution">Institutional Clients</span>
+    <span *ngIf="isAgainstInstitution">For Against</span>
+    
+  </div>
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-body">
+            <div class="row table-toolbar" id="divCustomFilter">
+              <div class="col-sm-3" style="margin-left: 15px;">
+                <div class="row case-table-toolbar">
+                  <ul class="nav nav-tabs">
+                    <li class="active">
+                      <a href="#tab_runningCase" (click)="clickRunningCase()" data-toggle="tab">Running Case</a>
+                    </li>
+                    <li>
+                      <a href="#tab_completedCase" (click)="clickCompletedCase()" data-toggle="tab">Completed</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <i class="fa fa-institution" style="position: fixed;margin-top: 8px;margin-left: 3px;"></i>
+                <app-custom-single-select *ngIf="institutionConfig" [data]="arInstitution" [config]="institutionConfig" (valueChanged)="changeInstitution($event)"></app-custom-single-select>
+                <div *ngIf="isViewOnlyForUser && InstitutionValue" style=" margin-left: 23px;margin-top: 6px;">{{InstitutionValue.institutionName}}</div>
+              </div>
+
+              <div class="col-sm-2">
+                <div *ngIf="arRecourse.length>0">
+                  <app-custom-single-select [data]="arRecourse" [config]="recourseConfig" [selectedItem]="recourseDefaultSelectedItem" (valueChanged)="changeRecourse($event)"></app-custom-single-select>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <img *ngIf="isFilterApplied" height="22" width="28" src="assets/dist/img/filter_applied.jpg" title="Filter" data-toggle="modal"
+                  data-target="#filterForInstitutionModal">
+                <img *ngIf="!isFilterApplied" src="assets/dist/img/filter.png" title="Filter" data-toggle="modal" data-target="#filterForInstitutionModal">
+                <img src="assets/dist/img/reset_filter.png" title="Clear Filter" (click)="clearFilters();">
+              </div>
+              <div class="col-sm-2">
+                <input type="text" class="input-sm custom-search" placeholder="Search..." (keyup)="applyFilter($event.target.value)">
+              </div>
+
+            </div>
+
+            <app-data-table [tableData]="tableInputData" [tableColumns]="columns" (rowClick)="onRowClick($event)" (rowDoubleClick)="onRowDoubleClick($event)"
+              (selectedRows)="onRowSelect($event)" [showRowSelect]="rowSelect" [hoverTableRow]="hoverTableRow" [actionColumnConfig]="actionColumnConfig"
+              [showSearchFilter]="showSearchFilter"  (actionBtnClick)="onActionBtnClick($event)" (rowClickShowCalendar)="onShowCalendar($event)">
+            </app-data-table>
+
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+        <ng-container *ngIf="selectedRowsCheckbox && selectedRowsCheckbox.length > 0">
+          <div class="export1">
+            <a (click)="downloadFile()">
+                <img src="/assets/dist/img/download1.png" height="40"></a>
+           
+          </div>
+
+          <div class="export2">
+            <a (click)="downloadCSV()">
+              <img src="/assets/dist/img/download2.png" height="40">
+            </a>
+          </div>
+        </ng-container>
+      </div>
+      <!-- /.col -->
+    </div>
+
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+
+
+
+<div class="favicon" (click)="openPopup()" *ngIf="!isViewOnlyForUser">
+  <div class="tooltip bg-black text-white font-size-12 padding-5 border-radius-3 fw-700">
+    <span class="tooltip-text">Import Cases</span>
+  </div>
+  <a>
+    <i class="fa fa-plus" type="button" data-toggle="modal" data-target="#addForInstitutionModal"></i>
+  </a>
+</div>
+<add-for-institution-modal *ngIf="!isViewOnlyForUser" (saveSuccess)="caseSaved()" [Institution]="InstitutionValue"></add-for-institution-modal>
+<history-for-institution-modal></history-for-institution-modal>
+
+<!-- Filter Case Starts -->
+<div class="modal fade" style="z-index: 2001;" id="filterForInstitutionModal">
+  <div class="modal-dialog caseModalSearch">
+    <div class="modal-content" style="border-radius: 5px;">
+      <div class="modal-header">
+
+        <button type="button" id="closebtnFilter" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Filter </h4>
+      </div>
+      <div style="width:120px;height:10%;background-color:black;"></div>
+      <div style="margin-top: -15px; margin-bottom: -15px; background-color: #eee;" class="modal-body">
+
+        <div class="row">
+
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <select class="form-control" (change)="filterTypeChange($event.target.value)" [(ngModel)]="filterTypeId">
+                <option *ngFor="let item of arFilterType" [value]="item.value">{{item.text}}</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-md-12">&nbsp;</div>
+        </div>
+
+        <div class="row" [style.display]="!showDateFilter? 'none' : null">
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar"></i>
+                </div>
+                <input type="text" class="form-control pull-right" id="txtFromToDate" placeholder="From To date">
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">&nbsp;</div>
+        </div>
+        <div style="text-align: right;margin-right: 27px;">
+          <button type="button" id="btnReset" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="submit" id="btnSearch" (click)="search()" data-dismiss="modal" class="btn btn-modal-addedit">Search</button>
+        </div>
+
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- Filter case ends -->

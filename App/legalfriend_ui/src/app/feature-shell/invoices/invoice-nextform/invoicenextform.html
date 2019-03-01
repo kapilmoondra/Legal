@@ -1,0 +1,254 @@
+<style type="text/css">
+    body {
+        background: #fafafa;
+        font: 12px/20px Arial, Helvetica, sans-serif
+    }
+
+    .invoice-wrap {
+        width: 915px;
+        margin: 0 auto;
+        background: #FFF;
+        color: #000;
+        min-height: 700px;
+    }
+
+    .invoice-inner {
+        margin: 0 15px;
+        padding: 20px 0;
+    }
+
+    .invoice-address {
+        border-top: 3px double #000000;
+        margin: 20px 0;
+        padding-top: 25px;
+        margin-bottom: 30px;
+    }
+
+    .bussines-name {
+        font-size: 18px;
+        font-weight: 100
+    }
+
+    .invoice-name {
+        font-size: 22px;
+        font-weight: 700
+    }
+
+    .listing-table th {
+        background-color: #e5e5e5;
+        border-bottom: 1px solid #555555;
+        border-top: 1px solid #555555;
+        font-weight: bold;
+        text-align: left;
+        padding: 6px 4px
+    }
+
+    .listing-table td {
+        border-bottom: 1px solid #555555;
+        text-align: left;
+        padding: 5px 6px;
+        vertical-align: top
+    }
+
+    .total-table td {
+        border-left: 1px solid #555555;
+    }
+
+    .total-row {
+        background-color: #e5e5e5;
+        border-bottom: 1px solid #555555;
+        border-top: 1px solid #555555;
+        font-weight: bold;
+    }
+
+    .row-items {
+        margin: 5px 0;
+        display: block
+    }
+
+    .notes-block {
+        margin: 50px 0 0 0
+    }
+
+    /*tables*/
+
+    table td {
+        vertical-align: top
+    }
+
+    .items-table {
+        border: 1px solid #555555;
+        border-collapse: collapse;
+        width: 100%
+    }
+
+    .items-table td,
+    .items-table th {
+        border: 1px solid #555555;
+        padding: 4px 5px;
+        text-align: left
+    }
+
+    .items-table th {
+        background: #f5f5f5;
+    }
+
+    .totals-row .wide-cell {
+        border: 1px solid #fff;
+        border-right: 1px solid #555555;
+        border-top: 1px solid #555555
+    }
+
+    .html2canvas-container {
+        width: 3000px !important;
+        height: 3000px !important;
+    }
+
+    #NewPaginationContainer {
+        text-align: left;
+    }
+
+    .disabled {
+        cursor: not-allowed;
+        pointer-events: none;
+
+        /*Button disabled - CSS color class*/
+        color: #c0c0c0;
+
+    }
+</style>
+<div class="content-wrapper" id="print-section">
+    <div class="page-heading">
+        Invoice
+    </div>
+    <!-- Main content -->
+    <section class="content">
+
+        <div id="templateArea">
+            <div class="col-md-12">
+                <div class="col-md-2" style="text-align:right;padding-right:5px;">
+                    <div class="pagination-previous" (click)="PreviousCheck()">
+                        <a class="btn btn-default" (click)="p.previous()"> Previous </a>
+                    </div>
+                    <!-- <a [routerLink]="['/admin/invoices/invoiceform']" class="btn btn-default">Back</a> -->
+                </div>
+                <div class="col-md-8" style="padding:0px">
+                    <div class="invoice-wrap">
+
+                        <div class="invoice-inner" id="pdfdownloaddiv">
+                            <table border="0" cellpadding="0" cellspacing="0" class="is_logo" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td align="center" valign="top">
+                                            <div>
+                                                <div id="logoDiv">
+                                                    <img height="102" *ngIf="invoiceTemplateInfo.photoUrl" [src]="invoiceTemplateInfo.photoUrl" class="img-fluid" alt="">
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div>
+                                <table id="tblInvoice" class="table table-condensed table-bordered table-striped items-table">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Description
+                                            </th>
+                                            <th>
+                                                Date
+                                            </th>
+                                            <th>
+                                                Amount
+                                            </th>
+                                            <th width="20" *ngIf="!disableField">
+                                                <!-- <img height="30" (click)="addCustomRow()" src="assets/dist/img/toggle_plus.png"> -->
+                                            </th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="itemsInvoice">
+
+                                        <tr *ngFor="let item of arrInvoiceDetails |  paginate: { itemsPerPage: perPageItem, currentPage: p2 }" description="Description" qty="1"
+                                            unit_price="0" discount="0" subtotal="0" total="0" class="invoiceRow">
+                                            <td style="width: 500px">
+                                                <textarea [disabled]="disableField" onchange="Window.InvoiceFormComponent.CalculateFinalAmount(this)" rows="2" class="form-control description"
+                                                    type="text" maxlength="100" placeholder="Description">{{item.description}}</textarea>
+                                            </td>
+                                            <td>
+                                                <input class="form-control date billingDate" *ngIf="!item.isCustom" disabled value="{{item.billingDate}}" style="width:150px"
+                                                    placeholder="Date">
+                                                <ng-container *ngIf="item.isCustom">
+                                                    <div class="input-group date" data-provide="datepicker" data-date-format="dd M yyyy">
+                                                        <input [disabled]="disableField" readonly onchange="Window.InvoiceFormComponent.CalculateFinalAmount(this)" type="text" tabindex="14"
+                                                            value="{{item.billingDate}}" placeholder="dd MM yyyy" class="form-control billingDate"
+                                                            size="10">
+                                                        <div class="input-group-addon">
+                                                            <span class="fa fa-calendar"></span>
+                                                        </div>
+                                                    </div>
+                                                </ng-container>
+                                            </td>
+                                            <td>
+                                                <input OnlyNumber="true" [disabled]="disableField" class="form-control amount" value="{{item.amount}}" onchange="Window.InvoiceFormComponent.CalculateFinalAmount(this)"
+                                                    style="width:100px" placeholder="Amount">
+
+                                            </td>
+                                            <td *ngIf="!disableField">
+                                                <a onclick="Window.InvoiceFormComponent.RemoveInvoice(this)" class="btn btn-danger btn-sm remove-item">
+                                                    <i class="fa fa-fw fa-trash"></i>
+                                                </a>
+                                                <input type="hidden" class="hfIsCustom" value="{{item.isCustom}}">
+                                                <input type="hidden" class="hfBillingId" value="{{item.id}}">
+                                                <input type="hidden" class="hfinsitituionId" value="{{item.institutionId}}">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot id="TotalsSection">
+                                        <tr>
+                                            <td colspan="4" *ngIf="!disableField">
+                                                <button (click)="addCustomRow()" class="btn-custom">Add New Line Item</button>
+                                                <button style="float: right;" class="btn-custom" (click)="saveCustomCase();" *ngIf="isCustomCaseEntry">Save</button>
+                                            </td>
+
+                                        </tr>
+                                        <tr class="totals-row" id="TotalRow">
+                                            <td colspan="2">
+                                                <strong>
+                                                    <label style="font-weight:bold">Total</label>
+                                                </strong>
+                                            </td>
+                                            <td colspan="2">
+                                                <label [(ngModel)]="totalAmount" id="totalAmount">{{totalAmount |currency:'INR':true}}</label>
+                                            </td>
+                                        </tr>
+
+                                    </tfoot>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2" style="padding-left:5px;">
+                    <div id="NewPaginationContainer"></div>
+                </div>
+                <pagination-template #p="paginationApi" (pageChange)="p2 = $event">
+                    <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+                    <div class="custom-pagination">
+                        <div class="pagination-next" [class.disabled]="p.isLastPage()">
+                            <a class="btn btn-default" (click)="p.next();" id="btnNext"> Next </a>
+                        </div>
+                    </div>
+
+                </pagination-template>
+            </div>
+
+        </div>
+
+    </section>
+    <div style="clear: both;"></div>
+</div>
+<div style="clear: both;"></div>
