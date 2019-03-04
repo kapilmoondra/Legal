@@ -26,4 +26,6 @@ public interface IndividualBillingMasterRepository extends CrudRepository<Indivi
 
 	List<IndividualBillingMaster> findByStageAndRecourse(Stage stage, Recourse recourse);
 
+	List<IndividualBillingMaster> findByStageAndRecourseAndUserId(Stage stage, Recourse recourse, Long userId);
+
 }

@@ -16,9 +16,12 @@ import java.util.zip.ZipOutputStream;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.bouncycastle.crypto.RuntimeCryptoException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -55,7 +58,6 @@ import com.legalfriend.entities.Institution;
 import com.legalfriend.entities.LegalCaseVO;
 import com.legalfriend.entities.Recourse;
 import com.legalfriend.entities.Stage;
-import com.legalfriend.entities.User;
 import com.legalfriend.enums.ComplianceStatus;
 import com.legalfriend.enums.UserRole;
 import com.legalfriend.repository.AgainstInstitutionalCaseComplianceRepository;
@@ -212,8 +214,7 @@ public class CaseFilesManagementController {
 						zipFile);
 			}
 		} catch (Exception e) {
-			caseResponse.setHttpCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
-			caseResponse.setFailureReason("Error in uploaded file data " + e.getMessage());
+			throw new RuntimeException(e);
 		}
 
 		return caseResponse;
@@ -695,8 +696,9 @@ public class CaseFilesManagementController {
 			}
 			zipentry = new ZipEntry("file.csv");
 			zos.putNextEntry(zipentry);
-			ICsvBeanWriter csvWriter = new CsvBeanWriter(new OutputStreamWriter(zos), CsvPreference.STANDARD_PREFERENCE);
-			
+			ICsvBeanWriter csvWriter = new CsvBeanWriter(new OutputStreamWriter(zos),
+					CsvPreference.STANDARD_PREFERENCE);
+
 			List<ForInstitutionalCase> cases1 = new ArrayList<>();
 			List<Long> institutionalCaseIds = exportVO.getInstitutionalCaseIds();
 			if (institutionalCaseIds.size() > 0) {
@@ -718,10 +720,8 @@ public class CaseFilesManagementController {
 				}
 				csvWriter.write(csv, dataMapping);
 			}
-		
+
 			csvWriter.flush();
-		    
-			
 
 		} catch (Exception e) {
 			e.printStackTrace();

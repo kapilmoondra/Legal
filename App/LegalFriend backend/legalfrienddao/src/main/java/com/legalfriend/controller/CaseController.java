@@ -80,7 +80,7 @@ public class CaseController {
 
 	@Autowired
 	CaseService caseService;
-	
+
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -116,19 +116,19 @@ public class CaseController {
 
 	@Autowired
 	ForInstitutionalCaseService forInstitutionalService;
-	
+
 	@Autowired
 	AgainstInstitutionalCaseService againstInstitutionalService;
 
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	EmailService emailService;
-	
+
 	@Autowired
 	CsvFileReader csvFileReader;
-	
+
 	@Autowired
 	BranchRepository branchRepository;
 
@@ -209,7 +209,7 @@ public class CaseController {
 					eventRepo.save(event);
 				}
 				List<IndividualBillingMaster> billingMasters = billingMasterRepository
-						.findByStageAndRecourse(stages.get(0), recourse);
+						.findByStageAndRecourseAndUserId(stages.get(0), recourse, caseObj.getUserId());
 				if (billingMasters.size() > 0) {
 					IndividualBilling billing = new IndividualBilling();
 					billing.setAmount(billingMasters.get(0).getAmount());
@@ -263,7 +263,7 @@ public class CaseController {
 			List<Stage> stages = stageRepository.findByIdAndRecourse(caseObj.getStageId(), recourse);
 			if (stages.size() > 0) {
 				List<IndividualBillingMaster> billingMasters = billingMasterRepository
-						.findByStageAndRecourse(stages.get(0), recourse);
+						.findByStageAndRecourseAndUserId(stages.get(0), recourse, caseObj.getUserId());
 				if (billingMasters.size() > 0 && !persistedCase.getStageId().equals(caseObj.getStageId())) {
 					IndividualBilling billing = new IndividualBilling();
 					billing.setAmount(billingMasters.get(0).getAmount());
@@ -461,8 +461,8 @@ public class CaseController {
 			userCase.setId(Long.parseLong(row[0].toString()));
 			userCase.setCaseId(row[1] != null ? row[1].toString() : null);
 			userCase.setCourtCaseId(row[2] != null ? row[2].toString() : null);
-			userCase.setCustomerFirstName(row[3].toString());
-			userCase.setCustomerLastName(row[4].toString());
+			userCase.setCustomerFirstName(row[3] != null ? row[3].toString() : null);
+			userCase.setCustomerLastName(row[4] != null ? row[4].toString() : null);
 			userCase.setRecourseCode(row[5] != null ? row[5].toString() : null);
 			userCase.setStageName(row[6] != null ? row[6].toString() : null);
 			userCase.setNextHearingDate(row[7] != null ? formatter.format(formatter.parse(row[7].toString())) : null);
@@ -599,45 +599,45 @@ public class CaseController {
 		session.close();
 		return list;
 	}
-	
+
 	@GetMapping("/month")
-	public List<DashboardReport> getCasesByMonth(@RequestParam Long userId){
+	public List<DashboardReport> getCasesByMonth(@RequestParam Long userId) {
 		return caseService.findCaseCountByMonth(userId);
 	}
-	
+
 	@GetMapping("/date")
-	public List<DashboardReport> getCasesByDate(@RequestParam Long userId, 
-			@RequestParam String startDate,@RequestParam String endDate){
+	public List<DashboardReport> getCasesByDate(@RequestParam Long userId, @RequestParam String startDate,
+			@RequestParam String endDate) {
 		return caseService.findCaseCountByDate(userId, startDate, endDate);
 	}
-	
+
 	@GetMapping("/week")
-	public List<DashboardReport> getCasesByWeek(@RequestParam Long userId){
+	public List<DashboardReport> getCasesByWeek(@RequestParam Long userId) {
 		return caseService.findCaseCountByWeek(userId);
 	}
-	
+
 	@GetMapping("/lastupdated")
-	public List<LegalCaseDashboard> getRecentCases(@RequestParam Long userId){
+	public List<LegalCaseDashboard> getRecentCases(@RequestParam Long userId) {
 		return caseService.findUpdatedCases(userId);
 	}
-	
+
 	@GetMapping("/all")
-	public List<LegalCase> getAllCases(){
+	public List<LegalCase> getAllCases() {
 		return caseService.findAll();
 	}
-	
+
 	@GetMapping("/org/")
-	public List<Organization> getOrganizationCases(){
+	public List<Organization> getOrganizationCases() {
 		return caseService.findOrganizationCases();
 	}
-	
+
 	@GetMapping("/org/for")
-	public List<Organization> getOrganizationForCases(){
+	public List<Organization> getOrganizationForCases() {
 		return forInstitutionalService.findOrganizationsForCaseCount();
 	}
-	
+
 	@GetMapping("/org/against")
-	public List<Organization> getOrganizationAgainstCases(){
+	public List<Organization> getOrganizationAgainstCases() {
 		return againstInstitutionalService.findOrganizationsAgainstCaseCount();
 	}
 }

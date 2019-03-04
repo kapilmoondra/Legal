@@ -28,6 +28,7 @@ import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
 import com.legalfriend.entities.LegalCase;
 import com.legalfriend.entities.Mail;
+import com.legalfriend.repository.UserRepository;
 
 import freemarker.core.ParseException;
 import freemarker.template.Configuration;
@@ -47,13 +48,16 @@ public class EmailServiceImpl implements EmailService {
 
 	@Value("${spring.mail.username}")
 	private String mailFrom;
-	
+
 	@Autowired
 	private JavaMailSender emailSender;
 
 	@Autowired
 	private Configuration freemarkerConfig;
-	
+
+	@Autowired
+	private UserRepository userRepository;
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(EmailServiceImpl.class);
 
 	@Async
@@ -88,27 +92,20 @@ public class EmailServiceImpl implements EmailService {
 	}
 
 	@Override
-	public void sendEmail(String token, String email){
-		String verifyLink = "http://".concat(host).concat(":").concat(port).concat("/verifyUser/").concat(token);
-		
+	public void sendEmail(String token, String email) throws MessagingException, IOException, TemplateException {
+		String verifyLink = "http://".concat(host).concat(":").concat(port).concat("/verifyEmail/").concat(token);
+
 		Mail mail = new Mail();
 		mail.setFrom(mailFrom);
 		mail.setTo(email);
-		mail.setSubject("LegalFriend User Verification Mail");
+		mail.setSubject("LegalFriend Email Verification");
 
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("user_name", email.split("@")[0]);
+		model.put("user_name", userRepository.findByEmail(email).get(0).getFirstName());
 		model.put("verificationUrl", verifyLink);
-		try {
 		mail.setModel(model);
 		Template verification = freemarkerConfig.getTemplate("email-verification.ftl");
 		sendMail(mail, verification);
-		
-		}
-		catch(Exception e) {
-			
-		}
-		
 	}
 
 	@Override
@@ -121,7 +118,8 @@ public class EmailServiceImpl implements EmailService {
 		mail.setSubject("Remark has been added");
 
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("userName", email.split("@")[0]);
+		userRepository.findByEmail(email);
+		model.put("userName", userRepository.findByEmail(email).get(0).getFirstName());
 		model.put("caseId", caseId);
 
 		mail.setModel(model);
@@ -152,8 +150,9 @@ public class EmailServiceImpl implements EmailService {
 
 	@Override
 	public void sendReferralEmail(String toEmail, String token) {
-		
-		String referralUrl = "http://".concat(host).concat(":").concat(port).concat("/verifyReferralEmail/").concat(token);
+
+		String referralUrl = "http://".concat(host).concat(":").concat(port).concat("/verifyReferralEmail/")
+				.concat(token);
 		try {
 			Mail mail = new Mail();
 			mail.setFrom(mailFrom);
@@ -161,16 +160,15 @@ public class EmailServiceImpl implements EmailService {
 			mail.setSubject("Welcome to LegalFriend");
 
 			Map<String, Object> model = new HashMap<String, Object>();
-			model.put("userName", toEmail.split("@")[0]);
-			model.put("referralUrl",referralUrl);
+			model.put("userName", userRepository.findByEmail(toEmail).get(0).getFirstName());
+			model.put("referralUrl", referralUrl);
 
 			mail.setModel(model);
 			Template userVerification = freemarkerConfig.getTemplate("email-referralmail.ftl");
 			sendMail(mail, userVerification);
-			}
-			catch(Exception e) {
-				
-			}
+		} catch (Exception e) {
+
+		}
 	}
 
 	@Override
@@ -185,20 +183,20 @@ public class EmailServiceImpl implements EmailService {
 
 			Map<String, Object> model = new HashMap<String, Object>();
 			model.put("userName", name);
-			model.put("signupUrl",signupUrl);
+			model.put("signupUrl", signupUrl);
 
 			mail.setModel(model);
 			Template userVerification = freemarkerConfig.getTemplate("email-referralwelcome.ftl");
 			sendMail(mail, userVerification);
-			}
-			catch(Exception e) {
-				
-			}
+		} catch (Exception e) {
+
+		}
 	}
 
 	@Override
 	public void sendForgotPasswordEmail(String email, String token, String subject) {
-		String updatePasswordUrl = "http://".concat(host).concat(":").concat(port).concat("/updatePassword/").concat(token);
+		String updatePasswordUrl = "http://".concat(host).concat(":").concat(port).concat("/updatePassword/")
+				.concat(token);
 		try {
 			Mail mail = new Mail();
 			mail.setFrom(mailFrom);
@@ -206,50 +204,48 @@ public class EmailServiceImpl implements EmailService {
 			mail.setSubject(subject);
 
 			Map<String, Object> model = new HashMap<String, Object>();
-			model.put("userName", email.split("@")[0]);
-			model.put("updatePassword",updatePasswordUrl);
+			model.put("userName", userRepository.findByEmail(email).get(0).getFirstName());
+			model.put("updatePassword", updatePasswordUrl);
 
 			mail.setModel(model);
 			Template userVerification = freemarkerConfig.getTemplate("email-updatePassword.ftl");
 			sendMail(mail, userVerification);
-			}
-			catch(Exception e) {
-				
-			}
+		} catch (Exception e) {
+
+		}
 	}
 
 	@Override
-	public void sendReferralSignupEmail(String email, String name)  {
+	public void sendReferralSignupEmail(String email, String name) {
 		try {
-		Mail mail = new Mail();
-		mail.setFrom(mailFrom);
-		mail.setTo(email);
-		mail.setSubject("Referral Sign Up");
+			Mail mail = new Mail();
+			mail.setFrom(mailFrom);
+			mail.setTo(email);
+			mail.setSubject("Referral Sign Up");
 
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("userName", email.split("@")[0]);
-		model.put("name", name);
+			Map<String, Object> model = new HashMap<String, Object>();
+			model.put("userName", userRepository.findByEmail(email).get(0).getFirstName());
+			model.put("name", name);
 
-		mail.setModel(model);
-		Template userVerification = freemarkerConfig.getTemplate("email-referralsignup.ftl");
-		sendMail(mail, userVerification);
-		}
-		catch(Exception e) {
-			
+			mail.setModel(model);
+			Template userVerification = freemarkerConfig.getTemplate("email-referralsignup.ftl");
+			sendMail(mail, userVerification);
+		} catch (Exception e) {
+
 		}
 	}
 
 	@Override
-	public void sendCaseCreatedEmail(String email, String caseId) throws TemplateNotFoundException, MalformedTemplateNameException,
-	ParseException, IOException, MessagingException, TemplateException {
-		
+	public void sendCaseCreatedEmail(String email, String caseId) throws TemplateNotFoundException,
+			MalformedTemplateNameException, ParseException, IOException, MessagingException, TemplateException {
+
 		Mail mail = new Mail();
 		mail.setFrom(mailFrom);
 		mail.setTo(email);
 		mail.setSubject("New Case");
 
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("userName", email.split("@")[0]);
+		model.put("userName", userRepository.findByEmail(email).get(0).getFirstName());
 		model.put("caseId", caseId);
 
 		mail.setModel(model);
@@ -273,27 +269,26 @@ public class EmailServiceImpl implements EmailService {
 		emailSender.send(message);
 
 	}
-	
+
 	@Override
-	public void sendHearingDateReminderEmail(String email,String username, List<LegalCase> cases, Set dates) {
+	public void sendHearingDateReminderEmail(String email, String username, List<LegalCase> cases, Set dates) {
 		try {
-			
-		Mail mail = new Mail();
-		mail.setFrom(mailFrom);
-		mail.setTo(email);
-		mail.setSubject("Next Hearing date reminder");
 
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("userName", username);
-		model.put("dateList", dates);
-		model.put("caseList", cases);
+			Mail mail = new Mail();
+			mail.setFrom(mailFrom);
+			mail.setTo(email);
+			mail.setSubject("Next Hearing date reminder");
 
-		mail.setModel(model);
-		Template userVerification = freemarkerConfig.getTemplate("email-reminder.ftl");
-		sendMail(mail, userVerification);
-		
-		}
-		catch(Exception e) {
+			Map<String, Object> model = new HashMap<String, Object>();
+			model.put("userName", username);
+			model.put("dateList", dates);
+			model.put("caseList", cases);
+
+			mail.setModel(model);
+			Template userVerification = freemarkerConfig.getTemplate("email-reminder.ftl");
+			sendMail(mail, userVerification);
+
+		} catch (Exception e) {
 			LOGGER.error("Error while sending Hearing Date Reminder Mail........");
 		}
 	}

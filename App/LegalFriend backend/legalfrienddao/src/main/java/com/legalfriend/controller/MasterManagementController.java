@@ -1,15 +1,13 @@
 package com.legalfriend.controller;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import org.hibernate.Query;
-import org.hibernate.Session;
+import org.apache.commons.beanutils.BeanUtils;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -18,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestParam;	
 import org.springframework.web.bind.annotation.RestController;
 
 import com.legalfriend.entities.BillingMaster;
@@ -71,17 +69,19 @@ import com.legalfriend.response.StageResponse;
 import com.legalfriend.response.StateResponse;
 import com.legalfriend.service.BranchService;
 import com.legalfriend.service.CaseService;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 @RestController
 @RequestMapping("/master")
 public class MasterManagementController {
-	
+
 	@Autowired
 	CaseService caseService;
-	
+
 	@Autowired
 	BranchService branchService;
-	
+
 	@Autowired
 	CityRepository cityRepository;
 
@@ -126,16 +126,16 @@ public class MasterManagementController {
 
 	@Autowired
 	RoleRepository roleRepo;
-	
+
 	@Autowired
 	CourtRequestRepository courtRequestRepo;
 
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	private String FETCH_ADMIN_USER = "select * from user_role where user_id=:userId and role_id=:roleId";
+	private static final String FETCH_ADMIN_USER = "select * from user_role where user_id=:userId and role_id=:roleId";
 
-	private String FETCH_USER_ROLE = " select r.role_name from user_role ur left join role r on r.id=ur.role_id WHERE ur.user_id = :userId";
+	private static final String FETCH_USER_ROLE = " select r.role_name from user_role ur left join role r on r.id=ur.role_id WHERE ur.user_id = :userId";
 
 	private List<String> findUserRole(Long userId) {
 		Session session = sessionFactory.openSession();
@@ -158,7 +158,7 @@ public class MasterManagementController {
 		query.setLong("roleId", role.getId());
 		List<Object[]> rows = (List<Object[]>) query.list();
 		session.close();
-		if (rows.size() > 0)
+		if (!rows.isEmpty())
 			return Boolean.TRUE;
 		else
 			return Boolean.FALSE;
@@ -171,7 +171,7 @@ public class MasterManagementController {
 		Set<City> cities = new HashSet<>();
 		iterator.forEach(cities::add);
 		List<User> users = userRepository.findById(userId);
-		if (users.size() != 0 && users.get(0).getEmail() != null) {
+		if (!users.isEmpty() && users.get(0).getEmail() != null) {
 			cities.addAll(cityRepository.findByUserId(users.get(0).getId()));
 		}
 		cityResponse.setHttpCode(HttpStatus.OK.value());
@@ -186,7 +186,7 @@ public class MasterManagementController {
 		Set<State> states = new HashSet<>();
 		iterator.forEach(states::add);
 		List<User> users = userRepository.findById(userId);
-		if (users.size() != 0 && users.get(0).getEmail() != null) {
+		if (!users.isEmpty() && users.get(0).getEmail() != null) {
 			states.addAll(stateRepository.findByUserId(users.get(0).getId()));
 		}
 		stateResponse.setHttpCode(HttpStatus.OK.value());
@@ -217,7 +217,7 @@ public class MasterManagementController {
 	}
 
 	@PostMapping("/update/city")
-	public LegalFriendResponse updateCity(@RequestBody City city) {
+	public LegalFriendResponse updateCity(@RequestBody City city) throws IllegalAccessException, InvocationTargetException {
 		LegalFriendResponse friendResponse = new LegalFriendResponse();
 		if (city.getUserId() == null) {
 			friendResponse.setFailureReason("Invalid request");
@@ -247,7 +247,7 @@ public class MasterManagementController {
 			return stateResponse;
 		}
 		List<State> states = stateRepository.findByStateName(state.getStateName().toLowerCase());
-		if (states.size() == 0) {
+		if (states.isEmpty()) {
 			State saveState = stateRepository.save(state);
 			stateResponse.setId(saveState.getId());
 			stateResponse.setSuccessMessage(" State has been successfully added");
@@ -260,7 +260,7 @@ public class MasterManagementController {
 	}
 
 	@PostMapping("/update/state")
-	public LegalFriendResponse updateState(@RequestBody State state) {
+	public LegalFriendResponse updateState(@RequestBody State state) throws IllegalAccessException, InvocationTargetException {
 		LegalFriendResponse stateResponse = new LegalFriendResponse();
 		if (state.getUserId() == null) {
 			stateResponse.setFailureReason("Invalid request");
@@ -295,7 +295,7 @@ public class MasterManagementController {
 			return districtResponse;
 		}
 		List<District> districts = districtRepository.findByDistrictName(district.getDistrictName().toLowerCase());
-		if (districts.size() == 0) {
+		if (districts.isEmpty()) {
 			District savedDistrict = districtRepository.save(district);
 			districtResponse.setId(savedDistrict.getId());
 			districtResponse.setSuccessMessage("District has been successfully added");
@@ -308,7 +308,7 @@ public class MasterManagementController {
 	}
 
 	@PostMapping("/update/district")
-	public LegalFriendResponse updateDistrict(@RequestBody District district) {
+	public LegalFriendResponse updateDistrict(@RequestBody District district) throws IllegalAccessException, InvocationTargetException {
 		LegalFriendResponse districtResponse = new LegalFriendResponse();
 		if (district.getUserId() == null) {
 			districtResponse.setFailureReason("Invalid request");
@@ -330,7 +330,7 @@ public class MasterManagementController {
 	}
 
 	@PostMapping(value = "/add/court")
-	public CourtResponse addCourt(@RequestBody Court court) {
+	public CourtResponse addCourt(@RequestBody Court court) throws IllegalAccessException, InvocationTargetException {
 		CourtResponse courtResponse = new CourtResponse();
 		if (court.getUserId() == null) {
 			courtResponse.setFailureReason("Invalid request");
@@ -338,10 +338,12 @@ public class MasterManagementController {
 			return courtResponse;
 		}
 		List<Court> courts = courtRepository.findByCourtName(court.getCourtName().toLowerCase());
-		if (courts.size() == 0) {
-			Court savedCourt = courtRepository.save(court);
-			courtResponse.setId(savedCourt.getId());
-			courtResponse.setSuccessMessage("Court has been successfully added");
+		if (courts.isEmpty()) {
+			CourtRequest courtRequest = new CourtRequest();
+			BeanUtils.copyProperties(court, courtRequest);
+			courtRequest.setCreatedDate(new Date());
+			courtRequestRepo.save(courtRequest);
+			courtResponse.setSuccessMessage("Your request has been submitted to administrator");
 			courtResponse.setHttpCode(HttpStatus.OK.value());
 		} else {
 			courtResponse.setFailureReason("Court already present");
@@ -351,7 +353,7 @@ public class MasterManagementController {
 	}
 
 	@PostMapping("/update/court")
-	public LegalFriendResponse updateCourt(@RequestBody Court court) {
+	public LegalFriendResponse updateCourt(@RequestBody Court court) throws IllegalAccessException, InvocationTargetException {
 		LegalFriendResponse courtResponse = new LegalFriendResponse();
 		if (court.getUserId() == null) {
 			courtResponse.setFailureReason("Invalid request");
@@ -378,25 +380,18 @@ public class MasterManagementController {
 	}
 
 	@PostMapping(value = "/add/recourse")
-	public RecourseResponse addRecourse(@RequestBody Recourse recourse) {
+	public RecourseResponse addRecourse(@RequestBody Recourse recourse) throws IllegalAccessException, InvocationTargetException {
 		RecourseResponse recourseResponse = new RecourseResponse();
 		if (recourse.getUserId() == null) {
 			recourseResponse.setFailureReason("Invalid request");
 			recourseResponse.setHttpCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
 			return recourseResponse;
 		}
-		List<Recourse> recourses = recourseRepository.findByRecourseCode(recourse.getRecourseCode().toLowerCase());
-		if (recourses.size() == 0 && isAdmin(recourse.getUserId())) {
-			Recourse savedRecourse = recourseRepository.save(recourse);
-			recourseResponse.setSuccessMessage("Recourse has been successfully added");
-			recourseResponse.setId(savedRecourse.getId());
-		} else {
-			RecourseRequest recourseRequest = new RecourseRequest();
-			BeanUtils.copyProperties(recourse, recourseRequest);
-			recourseRequest.setCreatedDate(new Date());
-			recourseRequestRepository.save(recourseRequest);
-			recourseResponse.setSuccessMessage("Your request has been submitted to administrator");
-		}
+		RecourseRequest recourseRequest = new RecourseRequest();
+		BeanUtils.copyProperties(recourse, recourseRequest);
+		recourseRequest.setCreatedDate(new Date());
+		recourseRequestRepository.save(recourseRequest);
+		recourseResponse.setSuccessMessage("Your request has been submitted to administrator");
 		recourseResponse.setHttpCode(HttpStatus.OK.value());
 		return recourseResponse;
 	}
@@ -408,7 +403,7 @@ public class MasterManagementController {
 		Set<Recourse> recourses = new HashSet<>();
 		iterator.forEach(recourses::add);
 		List<User> users = userRepository.findById(userId);
-		if (users.size() != 0 && users.get(0).getEmail() != null) {
+		if (!users.isEmpty() && users.get(0).getEmail() != null) {
 			recourses.addAll(recourseRepository.findByUserId(users.get(0).getId()));
 		}
 		recourseResponse.setHttpCode(HttpStatus.OK.value());
@@ -417,7 +412,7 @@ public class MasterManagementController {
 	}
 
 	@PostMapping("/update/recourse")
-	public LegalFriendResponse updateRecourse(@RequestBody Recourse recourse) {
+	public LegalFriendResponse updateRecourse(@RequestBody Recourse recourse) throws IllegalAccessException, InvocationTargetException {
 		LegalFriendResponse recourseResponse = new LegalFriendResponse();
 		if (recourse.getUserId() == null) {
 			recourseResponse.setFailureReason("Invalid request");
@@ -448,7 +443,7 @@ public class MasterManagementController {
 		Set<District> districts = new HashSet<>();
 		iterator.forEach(districts::add);
 		List<User> users = userRepository.findById(userId);
-		if (users.size() != 0 && users.get(0).getEmail() != null) {
+		if (!users.isEmpty() && users.get(0).getEmail() != null) {
 			districts.addAll(districtRepository.findByUserId(users.get(0).getId()));
 		}
 		districtResponse.setHttpCode(HttpStatus.OK.value());
@@ -463,7 +458,7 @@ public class MasterManagementController {
 		Set<Court> courts = new HashSet<>();
 		iterator.forEach(courts::add);
 		List<User> users = userRepository.findById(userId);
-		if (users.size() != 0 && users.get(0).getEmail() != null) {
+		if (!users.isEmpty() && users.get(0).getEmail() != null) {
 			courts.addAll(courtRepository.findByUserId(users.get(0).getId()));
 		}
 		courtResponse.setHttpCode(HttpStatus.OK.value());
@@ -487,7 +482,7 @@ public class MasterManagementController {
 		List<StageRecourse> stageRecourses = new ArrayList<>();
 		StageRecourseResponse stageRecourseResponse = new StageRecourseResponse();
 		List<User> users = userRepository.findById(userId);
-		if (users.size() != 0 && users.get(0).getEmail() != null) {
+		if (!users.isEmpty() && users.get(0).getEmail() != null) {
 			Session session = sessionFactory.openSession();
 			Query query = session.createSQLQuery(
 					"SELECT s.id, r.recourse_code, s.stage_name, s.fk_status_id, r.id as ids, s.stage_code FROM stage s left outer join recourse r on r.id = s.fk_recourse_id WHERE (s.fk_user_id = :userId or s.fk_user_id is null) and r.id= :rId");
@@ -520,29 +515,19 @@ public class MasterManagementController {
 			stageResponse.setHttpCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
 			return stageResponse;
 		}
-		List<Stage> stages = stageRepository.findByStageCode(stage.getStageCode().toLowerCase());
-		if (stages.size() == 0 && isAdmin(stage.getUserId())) {
-			Stage savedStage = stageRepository.save(stage);
-			stageResponse.setId(savedStage.getId());
-			stageResponse.setSuccessMessage(" Stage has been successfully added");
-			stageResponse.setHttpCode(HttpStatus.OK.value());
-		} else {
-			StageRequest stageRequest = new StageRequest();
-			stageRequest.setStageCode(stage.getStageCode());
-			stageRequest.setStageName(stage.getStageName());
-			stageRequest.setStatusId(stage.getStatusId());
-			stageRequest.setRecourse(recourseRepository.findById(stage.getRecourse().getId()));
-			stageRequest.setCreatedDate(new Date());
-			stageRequestRepository.save(stageRequest);
-			stageResponse.setHttpCode(HttpStatus.OK.value());
-			stageResponse.setSuccessMessage("Your request has been submitted to administrator");
-		}
+		StageRequest stageRequest = new StageRequest();
+		stageRequest.setStageCode(stage.getStageCode());
+		stageRequest.setStageName(stage.getStageName());
+		stageRequest.setRecourse(recourseRepository.findById(stage.getRecourse().getId()));
+		stageRequest.setCreatedDate(new Date());
+		stageRequestRepository.save(stageRequest);
+		stageResponse.setHttpCode(HttpStatus.OK.value());
+		stageResponse.setSuccessMessage("Your request has been submitted to administrator");
 		return stageResponse;
-
 	}
 
 	@PostMapping("/update/stage")
-	public LegalFriendResponse updateStage(@RequestBody Stage stage) {
+	public LegalFriendResponse updateStage(@RequestBody Stage stage) throws IllegalAccessException, InvocationTargetException {
 		LegalFriendResponse stageResponse = new LegalFriendResponse();
 		if (stage.getUserId() == null) {
 			stageResponse.setFailureReason("Invalid request");
@@ -562,7 +547,6 @@ public class MasterManagementController {
 				StageRequest stageRequest = new StageRequest();
 				stageRequest.setStageCode(stage.getStageCode());
 				stageRequest.setStageName(stage.getStageName());
-				stageRequest.setStatusId(stage.getStatusId());
 				stageRequest.setRecourse(recourseRepository.findById(stage.getRecourse().getId()));
 				stageRequest.setCreatedDate(new Date());
 				stageRequestRepository.save(stageRequest);
@@ -581,7 +565,7 @@ public class MasterManagementController {
 		List<User> users = userRepository.findById(userId);
 		List<Compliance> compliances = new ArrayList<>();
 		ComplianceResponse complianceResponse = new ComplianceResponse();
-		if (users.size() != 0 && users.get(0).getEmail() != null) {
+		if (!users.isEmpty() && users.get(0).getEmail() != null) {
 			compliances = complianceRepository.findByUserId(userId);
 		}
 		complianceResponse.setHttpCode(HttpStatus.OK.value());
@@ -599,7 +583,7 @@ public class MasterManagementController {
 		}
 		List<Compliance> compliances = complianceRepository
 				.findByComplianceNameAndUserId(compliance.getComplianceName().toLowerCase(), compliance.getUserId());
-		if (compliances.size() == 0) {
+		if (compliances.isEmpty()) {
 			compliance.setRecourse(recourseRepository.findById(compliance.getRecourse().getId()));
 			compliance.setStage(stageRepository.findById(compliance.getStage().getId()));
 			Compliance savedCompl = complianceRepository.save(compliance);
@@ -614,7 +598,7 @@ public class MasterManagementController {
 	}
 
 	@PostMapping("/update/compliance")
-	public LegalFriendResponse updateCompliance(@RequestBody Compliance compliance) {
+	public LegalFriendResponse updateCompliance(@RequestBody Compliance compliance) throws IllegalAccessException, InvocationTargetException {
 		LegalFriendResponse complianceResponse = new LegalFriendResponse();
 		if (compliance.getUserId() == null) {
 			complianceResponse.setFailureReason("Invalid request");
@@ -649,7 +633,7 @@ public class MasterManagementController {
 			userId = userRepository.findById(userId).get(0).getClientId();
 		}
 		List<User> users = userRepository.findById(userId);
-		if (users.size() != 0 && users.get(0).getEmail() != null) {
+		if (!users.isEmpty() && users.get(0).getEmail() != null) {
 			branches.addAll(branchRepository.findByUserId(users.get(0).getId()));
 		}
 		branchResponse.setHttpCode(HttpStatus.OK.value());
@@ -667,7 +651,7 @@ public class MasterManagementController {
 		}
 		List<Branch> branches = branchRepository.findByBranchCodeAndUserIdAndBranchName(
 				branch.getBranchCode().toUpperCase(), branch.getUserId(), branch.getBranchName().toUpperCase());
-		if (branches.size() == 0 && isAdmin(branch.getUserId())) {
+		if (branches.isEmpty() && isAdmin(branch.getUserId())) {
 			branch.setBranchName(branch.getBranchName().toUpperCase());
 			Branch savedBranch = branchRepository.save(branch);
 			branchResponse.setId(savedBranch.getId());
@@ -681,7 +665,7 @@ public class MasterManagementController {
 	}
 
 	@PostMapping("/update/branch")
-	public LegalFriendResponse updateBranch(@RequestBody Branch branch) {
+	public LegalFriendResponse updateBranch(@RequestBody Branch branch) throws IllegalAccessException, InvocationTargetException {
 		LegalFriendResponse branchResponse = new LegalFriendResponse();
 		if (branch.getUserId() == null) {
 			branchResponse.setFailureReason("Invalid request");
@@ -692,8 +676,7 @@ public class MasterManagementController {
 		try {
 			Branch b = branchRepository.findById(branch.getId());
 			if (b.getUserId() == branch.getUserId()
-					|| isAdmin(b.getUserId()) && !b.getBranchName().equals(branch.getBranchName())
-							&& !b.getBranchCode().equals(branch.getBranchCode())) {
+					|| isAdmin(b.getUserId())) {
 				BeanUtils.copyProperties(branch, b);
 				branch.setBranchName(branch.getBranchName().toUpperCase());
 				branchRepository.save(branch);
@@ -722,9 +705,6 @@ public class MasterManagementController {
 		}
 		List<User> users = userRepository.findById(userId);
 		institutions.addAll(institutionRepository.findByUserId(users.get(0).getId()));
-		// if (users.size() != 0 && users.get(0).getEmail() != null) {
-		// institutions.addAll(institutionRepository.findByUserId(users.get(0).getId()));
-		// }
 		institutionResponse.setHttpCode(HttpStatus.OK.value());
 		institutionResponse.setInstitutions(institutions);
 		return institutionResponse;
@@ -740,7 +720,7 @@ public class MasterManagementController {
 		}
 		List<Institution> institutions = institutionRepository.findByInstitutionNameAndUserId(
 				institution.getInstitutionName().toUpperCase(), institution.getUserId());
-		if (institutions.size() == 0 && isAdmin(institution.getUserId())) {
+		if (institutions.isEmpty() && isAdmin(institution.getUserId())) {
 			institution.setInstitutionName(institution.getInstitutionName().toUpperCase());
 			Institution savedInstitution = institutionRepository.save(institution);
 			institutionResponse.setId(savedInstitution.getId());
@@ -754,7 +734,7 @@ public class MasterManagementController {
 	}
 
 	@PostMapping("/update/institution")
-	public LegalFriendResponse updateInstitution(@RequestBody Institution institution) {
+	public LegalFriendResponse updateInstitution(@RequestBody Institution institution) throws IllegalAccessException, InvocationTargetException {
 		LegalFriendResponse institutionResponse = new LegalFriendResponse();
 		if (institution.getUserId() == null) {
 			institutionResponse.setFailureReason("Invalid request");
@@ -777,7 +757,7 @@ public class MasterManagementController {
 	}
 
 	@PostMapping("/update/default/institution")
-	public LegalFriendResponse updateDefaultInstitution(@RequestBody Institution institution) {
+	public LegalFriendResponse updateDefaultInstitution(@RequestBody Institution institution) throws IllegalAccessException, InvocationTargetException {
 		LegalFriendResponse institutionResponse = new LegalFriendResponse();
 		if (institution.getUserId() == null) {
 			institutionResponse.setFailureReason("Invalid request");
@@ -787,7 +767,7 @@ public class MasterManagementController {
 		LegalFriendResponse friendResponse = new LegalFriendResponse();
 		try {
 			List<Institution> b = institutionRepository.findByIdAndUserId(institution.getId(), institution.getUserId());
-			if (b.size() > 0) {
+			if (!b.isEmpty()) {
 				BeanUtils.copyProperties(institution, b);
 				Institution i = institutionRepository.findByUserIdAndDefaultInstitution(institution.getUserId(), true);
 				if (i != null) {
@@ -815,14 +795,14 @@ public class MasterManagementController {
 		Set<BillingMaster> billings = new HashSet<>();
 		iterator.forEach(billings::add);
 		List<User> users = userRepository.findById(userId);
-		if (users.size() != 0 && users.get(0).getEmail() != null) {
+		if (!users.isEmpty() && users.get(0).getEmail() != null) {
 			billings.addAll(billingRepository.findByUserId(users.get(0).getId()));
 		}
 		billingResponse.setHttpCode(HttpStatus.OK.value());
 		billingResponse.setBillings(billings);
 		return billingResponse;
 	}
-	
+
 	@GetMapping(value = "/billings/individual")
 	public IndividualBillingResponse getIndividualBillingList(@RequestParam Long userId) {
 		IndividualBillingResponse billingResponse = new IndividualBillingResponse();
@@ -830,7 +810,7 @@ public class MasterManagementController {
 		Set<IndividualBillingMaster> billings = new HashSet<>();
 		iterator.forEach(billings::add);
 		List<User> users = userRepository.findById(userId);
-		if (users.size() != 0 && users.get(0).getEmail() != null) {
+		if (!users.isEmpty() && users.get(0).getEmail() != null) {
 			billings.addAll(individualBillingMasterRepository.findByUserId(users.get(0).getId()));
 		}
 		billingResponse.setHttpCode(HttpStatus.OK.value());
@@ -851,7 +831,7 @@ public class MasterManagementController {
 		Stage stage = stageRepository.findById(billing.getStage().getId());
 		List<BillingMaster> billings = billingRepository.findByInstitutionAndRecourseAndStage(institution, recourse,
 				stage);
-		if (billings.size() == 0) {
+		if (billings.isEmpty()) {
 			BillingMaster savedBilling = billingRepository.save(billing);
 			billingResponse.setId(savedBilling.getId());
 			billingResponse.setSuccessMessage(" Billing has been successfully added");
@@ -875,7 +855,7 @@ public class MasterManagementController {
 		Stage stage = stageRepository.findById(billing.getStage().getId());
 		List<IndividualBillingMaster> billings = individualBillingMasterRepository.findByStageAndRecourse(stage,
 				recourse);
-		if (billings.size() == 0) {
+		if (billings.isEmpty()) {
 			IndividualBillingMaster savedBilling = individualBillingMasterRepository.save(billing);
 			billingResponse.setId(savedBilling.getId());
 			billingResponse.setSuccessMessage(" Billing has been successfully added");
@@ -889,7 +869,7 @@ public class MasterManagementController {
 	}
 
 	@PostMapping("/update/billing")
-	public LegalFriendResponse updateBilling(@RequestBody BillingMaster billing) {
+	public LegalFriendResponse updateBilling(@RequestBody BillingMaster billing) throws IllegalAccessException, InvocationTargetException {
 		BillingResponse billingResponse = new BillingResponse();
 		if (billing.getUserId() == null) {
 			billingResponse.setFailureReason("Invalid request");
@@ -909,9 +889,9 @@ public class MasterManagementController {
 		}
 		return friendResponse;
 	}
-	
+
 	@PostMapping("/update/billing/individual")
-	public LegalFriendResponse updateBillingIndividual(@RequestBody IndividualBillingMaster billing) {
+	public LegalFriendResponse updateBillingIndividual(@RequestBody IndividualBillingMaster billing) throws IllegalAccessException, InvocationTargetException {
 		BillingResponse billingResponse = new BillingResponse();
 		if (billing.getUserId() == null) {
 			billingResponse.setFailureReason("Invalid request");
@@ -933,104 +913,102 @@ public class MasterManagementController {
 	}
 
 	@GetMapping("/dashbranch")
-	public List<DashboardReport> getBranchUserCount(@RequestParam Long userId){
+	public List<DashboardReport> getBranchUserCount(@RequestParam Long userId) {
 		return branchService.findTotalUsersByBranch(userId);
 	}
-	
+
 	@GetMapping("/institutional/month")
-	public List<DashboardReport> getInstitutionalCasesMonth(@RequestParam Long userId){
+	public List<DashboardReport> getInstitutionalCasesMonth(@RequestParam Long userId) {
 		return caseService.findInstitutionalCasesMonth(userId);
 	}
-	
+
 	@GetMapping("/institutional/week")
-	public List<DashboardReport> getInstitutionalCasesWeek(@RequestParam Long userId){
+	public List<DashboardReport> getInstitutionalCasesWeek(@RequestParam Long userId) {
 		return caseService.findInstitutionalCasesWeek(userId);
 	}
-	
+
 	@GetMapping("/institutional/date")
-	public List<DashboardReport> getInstitutionalCasesDate(@RequestParam Long userId
-			,@RequestParam String startDate,@RequestParam String endDate){
+	public List<DashboardReport> getInstitutionalCasesDate(@RequestParam Long userId, @RequestParam String startDate,
+			@RequestParam String endDate) {
 		return caseService.findInstitutionalCasesDate(userId, startDate, endDate);
 	}
-	
+
 	@GetMapping("/allcases/month")
-	public List<DashboardReport> getAllCasesMonth(@RequestParam Long userId){
+	public List<DashboardReport> getAllCasesMonth(@RequestParam Long userId) {
 		return caseService.findAllCasesMonth(userId);
 	}
-	
+
 	@GetMapping("/allcases/week")
-	public List<DashboardReport> getAllCasesWeek(@RequestParam Long userId){
+	public List<DashboardReport> getAllCasesWeek(@RequestParam Long userId) {
 		return caseService.findAllCasesWeek(userId);
 	}
-	
+
 	@GetMapping("/allcases/date")
-	public List<DashboardReport> getAllCasesDate(@RequestParam Long userId
-			,@RequestParam String startDate,@RequestParam String endDate){
+	public List<DashboardReport> getAllCasesDate(@RequestParam Long userId, @RequestParam String startDate,
+			@RequestParam String endDate) {
 		return caseService.findAllCasesDate(userId, startDate, endDate);
 	}
-	
+
 	@GetMapping("/branch/billing")
-	public List<DashboardReport> getBranchBillings(@RequestParam Long userId,
-			@RequestParam String start,@RequestParam String end){
-		return branchService.findBranchBilling(userId,start,end);
+	public List<DashboardReport> getBranchBillings(@RequestParam Long userId, @RequestParam String start,
+			@RequestParam String end) {
+		return branchService.findBranchBilling(userId, start, end);
 	}
-	
+
 	@GetMapping("/selectedbranch/billing")
 	public List<DashboardReport> getSelectedBranchBillings(@RequestParam Long userId,
-			@RequestParam List<String> branches,
-			@RequestParam String start,@RequestParam String end){
-		return branchService.findBranchBilling(userId, branches,start,end);
+			@RequestParam List<String> branches, @RequestParam String start, @RequestParam String end) {
+		return branchService.findBranchBilling(userId, branches, start, end);
 	}
-	
+
 	@GetMapping("/branch/institution/billing")
 	public List<DashboardReport> getBranchInstitutionBillings(@RequestParam Long userId,
-			@RequestParam List<String> branches,@RequestParam String start,@RequestParam String end){
-		return branchService.findBranchInstitutionBilling(userId, branches,start,end);
+			@RequestParam List<String> branches, @RequestParam String start, @RequestParam String end) {
+		return branchService.findBranchInstitutionBilling(userId, branches, start, end);
 	}
-	
+
 	@GetMapping("/branch/institutions/billing")
-	public List<DashboardReport> getBranchInstitutionsBillings(@RequestParam Long userId,
-			@RequestParam String month,@RequestParam String start,@RequestParam String end){
-		return branchService.findBranchInstitutionBilling(userId, month,start,end);
+	public List<DashboardReport> getBranchInstitutionsBillings(@RequestParam Long userId, @RequestParam String month,
+			@RequestParam String start, @RequestParam String end) {
+		return branchService.findBranchInstitutionBilling(userId, month, start, end);
 	}
-	
+
 	@GetMapping("/branch/institution/monthbilling")
 	public List<DashboardReport> getBranchInstMonthBilling(@RequestParam Long userId,
-			@RequestParam List<String> branches,@RequestParam String month,@RequestParam String start,
-			@RequestParam String end){
-		return branchService.findBranchInstitutionBilling(userId, branches, month,start,end);
+			@RequestParam List<String> branches, @RequestParam String month, @RequestParam String start,
+			@RequestParam String end) {
+		return branchService.findBranchInstitutionBilling(userId, branches, month, start, end);
 	}
-	
+
 	@GetMapping("/recourse/requests")
 	public List<RecourseRequest> getRecourseRequests(){
 		return recourseRequestRepository.getRecourseRequests();
 	}
-	
+
 	@GetMapping("/stage/requests")
 	public List<StageRequest> getStageRequests(){
 		return stageRequestRepository.getStageRequests();
 	}
-	
+
 	@GetMapping("/court/requests")
 	public List<CourtRequest> getCourtRequests(){
 		return courtRequestRepo.getCourtRequests();
 	}
-	
+
 	@PutMapping("/recourse/requests")
 	public void updateRecourseRequestsStatus(@RequestParam Long id){
-	
 		RecourseRequest ob = recourseRequestRepository.findOne(id);
 		ob.setStatus("RESOLVED");
 		recourseRequestRepository.save(ob);
 	}
-	
+
 	@PutMapping("/stage/requests")
 	public void updateStageRequestsStatus(@RequestParam Long id){
 		StageRequest ob = stageRequestRepository.findOne(id);
 		ob.setStatus("RESOLVED");
 		stageRequestRepository.save(ob);
 	}
-	
+
 	@PutMapping("/court/requests")
 	public void updateCourtRequestsStatus(@RequestParam Long id){
 		CourtRequest ob = courtRequestRepo.findOne(id);

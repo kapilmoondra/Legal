@@ -62,7 +62,7 @@ public class LegalCase extends Auditable<String> {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date completionDate;
 
-	@Column(name = "customer_id", nullable = false)
+	@Column(name = "customer_id")
 	private Long customerId;
 
 	@Column(name = "ground_for_closing_file")

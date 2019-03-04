@@ -17,7 +17,7 @@ public interface EmailService {
 
 	public void sendEmail(String toEmail, String subject, String content);
 
-	public void sendEmail(String token, String email);
+	public void sendEmail(String token, String email) throws MessagingException, IOException, TemplateException;
 
 	public void sendReferralEmail(String toEmail, String token);
 

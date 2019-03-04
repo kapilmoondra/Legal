@@ -1,5 +1,6 @@
 package com.legalfriend.controller;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -7,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.Query;
@@ -53,6 +55,8 @@ import com.legalfriend.repository.UserTypeRepository;
 import com.legalfriend.response.LegalFriendResponse;
 import com.legalfriend.service.UserService;
 import com.legalfriend.util.EmailServiceImpl;
+
+import freemarker.template.TemplateException;
 
 @RestController
 @RequestMapping("/users")
@@ -108,7 +112,8 @@ public class GeneralController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(GeneralController.class);
 
 	@RequestMapping(value = "/user", method = RequestMethod.POST)
-	public LegalFriendResponse signup(HttpServletRequest request, @RequestBody User user) {
+	public LegalFriendResponse signup(HttpServletRequest request, @RequestBody User user)
+			throws MessagingException, IOException, TemplateException {
 		List<User> persistedUser = userRepository.findByEmail(user.getEmail().toLowerCase());
 		LegalFriendResponse friendResponse = new LegalFriendResponse();
 		if (persistedUser.size() > 0) {
@@ -142,18 +147,10 @@ public class GeneralController {
 		registrationRepository.save(registerToken);
 		emailService.sendEmail(token, u.getEmail());
 		createUserSubscription(user);
-		createInvoiceNumber(persistedUser.get(0).getId());
 		friendResponse.setSuccessMessage("User has been created successfully");
 		friendResponse.setId(u.getId());
 		friendResponse.setHttpCode(HttpStatus.OK.value());
 		return friendResponse;
-	}
-
-	private void createInvoiceNumber(Long id) {
-		InvoiceNumber invoiceNumber = new InvoiceNumber();
-		invoiceNumber.setId(id);
-		invoiceNumber.setNextInvoiceNumber(100L);
-		invoiceNumberRepo.save(invoiceNumber);
 	}
 
 	@RequestMapping(value = "/referral", method = RequestMethod.POST)
@@ -390,12 +387,13 @@ public class GeneralController {
 		return userRepository.findTrialExpiryOrganization();
 	}
 
-	
 	@GetMapping("/org/totalusers")
 	public List<Organization> getOrganizationUsers() {
 		return userService.findOrganizationUsersCount();
-	  }
-	 /* * 
+	}
+	/*
+	 * *
+	 * 
 	 * @GetMapping("/org/") public List<User> getOrgUsers(@RequestParam Long
 	 * userId) { return userService.findOrganizationUsers(userId); }
 	 * 

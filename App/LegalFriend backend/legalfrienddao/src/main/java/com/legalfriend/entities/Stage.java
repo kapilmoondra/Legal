@@ -19,13 +19,12 @@ public class Stage {
 	private String stageCode;
 	@Column(name = "stage_name")
 	private String stageName;
+	@Column(name = "stage_desc")
+	private String stageDesc;
 
 	@JoinColumn(name = "fk_recourse_id")
 	@ManyToOne
 	private Recourse recourse;
-
-	@Column(name = "fk_status_id")
-	private Long statusId;
 
 	@Transient
 	private Long userId;
@@ -62,20 +61,20 @@ public class Stage {
 		this.userId = userId;
 	}
 
-	public Long getStatusId() {
-		return statusId;
-	}
-
-	public void setStatusId(Long statusId) {
-		this.statusId = statusId;
-	}
-
 	public Recourse getRecourse() {
 		return recourse;
 	}
 
 	public void setRecourse(Recourse recourse) {
 		this.recourse = recourse;
+	}
+
+	public String getStageDesc() {
+		return stageDesc;
+	}
+
+	public void setStageDesc(String stageDesc) {
+		this.stageDesc = stageDesc;
 	}
 
 }

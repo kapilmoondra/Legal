@@ -2,13 +2,9 @@ package com.legalfriend.service.impl;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -84,7 +80,7 @@ public class CaseServiceImpl implements CaseService {
 		int value;
 		for (Object[] object : objects) {
 			DashboardReport caseDash = new DashboardReport();
-			if (object[0].toString() != null) {
+			if (object[0] != null && object[0].toString() != null) {
 				value = Integer.parseInt(object[0].toString());
 
 				if (value < 8) {

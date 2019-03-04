@@ -172,6 +172,12 @@ public class InvoiceController {
 	@PostMapping("/individual")
 	public InvoiceResponse createIndividualInvoice(@RequestBody InvoiceResponse invoice) {
 		Long userId = invoice.getInvoice().getUserId();
+		if(invoice.getInvoice().getBranch() == null || userId == null) {
+			InvoiceResponse invoiceResponse = new InvoiceResponse();
+			invoiceResponse.setHttpCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			invoiceResponse.setFailureReason("Branch information is missing");
+			return invoiceResponse;
+		}
 		Invoice invoice2 = new Invoice();
 		List<String> roles = findUserRole(invoice.getInvoice().getUserId());
 		if (!roles.contains(UserRole.ADMIN.name())) {
@@ -187,6 +193,7 @@ public class InvoiceController {
 		invoice2.setCreatedDate(new Date());
 		invoice2.setInvoiceNumber(getInvoiceNumber(userId));
 		invoice2.setTermsCondition(invoice.getInvoice().getTermsCondition());
+		invoice2.setBranch(branchRepo.findById(invoice.getInvoice().getBranch().getId()));
 		Invoice persistedInvoice = invoiceRepository.save(invoice2);
 		for (IndividualBilling billId : invoice.getIndividualBillings()) {
 			IndividualBilling billing = individualBillingRepository.findById(billId.getId());

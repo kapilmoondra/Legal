@@ -317,8 +317,9 @@ public class UserMangementController {
 		List<Manager> managers = new ArrayList<>();
 		Session session = sessionFactory.openSession();
 		Query query = session.createSQLQuery(
-				"select u.id, u.first_name, u.last_name from user_role ur left join user u on u.id=ur.user_id WHERE ur.role_id = :roleId and client_id = :clientId");
+				"select u.id, u.first_name, u.last_name from user_role ur left join user u on u.id=ur.user_id WHERE (ur.role_id = :roleId and client_id = :clientId) or (u.id = :id) group by u.id");
 		query.setLong("roleId", role.getId());
+		query.setLong("id", userId);
 		List<String> roles = findUserRole(userId);
 		if (roles.contains(UserRole.EMPLOYEE.name()) || roles.contains(UserRole.CLIENT.name())
 				|| roles.contains(UserRole.MANAGER.name())) {
@@ -343,8 +344,9 @@ public class UserMangementController {
 		Session session = sessionFactory.openSession();
 		List<Employee> employees = new ArrayList<>();
 		Query query = session.createSQLQuery(
-				"select u.id, u.first_name, u.last_name from user_role ur left join user u on u.id=ur.user_id WHERE ur.role_id = :roleId and client_id = :clientId");
+				"select u.id, u.first_name, u.last_name from user_role ur left join user u on u.id=ur.user_id WHERE (ur.role_id = :roleId and client_id = :clientId) or (u.id = :id) group by u.id");
 		query.setLong("roleId", role.getId());
+		query.setLong("id", userId);
 		List<String> roles = findUserRole(userId);
 		if (roles.contains(UserRole.EMPLOYEE.name()) || roles.contains(UserRole.CLIENT.name())
 				|| roles.contains(UserRole.MANAGER.name())) {
@@ -529,26 +531,26 @@ public class UserMangementController {
 	List<User> getAllCustomers(@RequestParam Long userId) {
 		return userService.findAllCustomers(userId);
 	}
-	
+
 	@GetMapping("/allcustomers/month")
-	List<DashboardReport> getAllCustomersMonth(@RequestParam Long userId){
+	List<DashboardReport> getAllCustomersMonth(@RequestParam Long userId) {
 		List<String> roleList = new ArrayList<>();
 		roleList.add(UserRole.CLIENT.toString());
 		return userService.findAllUsersCountMonth(userId, roleList);
 	}
-	
+
 	@GetMapping("/allcustomers/week")
-	List<DashboardReport> getAllCustomersWeek(@RequestParam Long userId){
+	List<DashboardReport> getAllCustomersWeek(@RequestParam Long userId) {
 		List<String> roleList = new ArrayList<>();
 		roleList.add(UserRole.CLIENT.toString());
 		return userService.findAllUsersCountWeek(userId, roleList);
 	}
-	
+
 	@GetMapping("/allcustomers/date")
-	List<DashboardReport> getAllCustomersWeek(@RequestParam Long userId,
-			@RequestParam String startDate,@RequestParam String endDate){
+	List<DashboardReport> getAllCustomersWeek(@RequestParam Long userId, @RequestParam String startDate,
+			@RequestParam String endDate) {
 		List<String> roleList = new ArrayList<>();
 		roleList.add(UserRole.CLIENT.toString());
-		return userService.findAllUsersCountDate(userId, roleList,startDate,endDate);
+		return userService.findAllUsersCountDate(userId, roleList, startDate, endDate);
 	}
 }
