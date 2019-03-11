@@ -1,165 +1,197 @@
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\UserLoginRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\controller\InvoiceTemplateController.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\Status.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\RecourseRequestRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\controller\ReferralController.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\util\EventServiceImpl.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\security\JwtTokenMissingException.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\UserPassword.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\ForInstitutionalCaseRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\DashboardReport.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\response\ComplianceStageRecourseResponse.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\CaseCompliance.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\AgainstInstitutionalCaseCompliance.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\Auditable.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\CaseFiles.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\InvoiceTemplate.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\response\EventResponse.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\security\AccountCredentials.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\controller\EvaluationController.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\response\DistrictResponse.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\UserAddress.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\Court.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\UserSubscription.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\BranchRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\security\JwtAuthenticationToken.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\ComplianceStatus.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\config\S3Config.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\Role.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\service\impl\UserServiceImpl.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\DashReport.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\AgainstInstitutionalCaseComplianceRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\StateRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\CaseComplianceRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\RecourseRequest.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\controller\DocumentTemplateController.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\service\EventServiceImpl.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\BillingRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\ForInstitutionalCaseCompliance.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\AgainstInstitutionalCaseRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\EventRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\response\CourtResponse.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\ForInstitutionalCase.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\CustomerType.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\UserTypeRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\StageRequest.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\enums\InvoiceStatus.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\response\BillingResponse.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\CaseFilesRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\UserPasswordLoginRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\service\EventService.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\StageRecourse.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\InstitutionRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\SubscriptionRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\controller\BillingController.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\AgainstInstitutionalCase.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\service\impl\BillingServiceImpl.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\config\Messages.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\LegalCase.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\enums\UserRole.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\InvoiceFooter.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\Referral.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\security\JWTLoginFilter.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\service\S3ServicesImpl.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\CourtRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\util\EmailServiceImpl.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\SubscriptionMaster.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\controller\UserMangementController.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\UserPasswordToken.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\ReferralRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\controller\CaseController.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\security\AuthorizationServerConfig.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\response\InvoiceResponse.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\service\UserService.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\config\DatabaseConfig.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\response\CityResponse.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\util\CsvFileReader.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\ForInstitutionalCaseComplianceRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\service\BillingService.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\Stage.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\LoginTrackRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\StageRequestRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\controller\CaseFilesManagementController.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\UserRegisterToken.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\ComplianceStatusRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\controller\GeneralController.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\service\CaseService.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\security\TokenAuthenticationService.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\Event.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\response\RecourseResponse.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\UserClient.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\RecourseRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\config\AuditableConfiguration.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\enums\EventStatus.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\response\ComplianceResponse.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\response\StageRecourseResponse.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\LoginTrack.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\response\StageResponse.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\security\AppUserDetailsService.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\UserRelationship.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\UserRole.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\Invoice.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\CsvToCaseFileDetailsMappingBean.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\UserRelationshipRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\security\JwtAuthenticationTokenFilter.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\UserCases.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\CaseFileDetails.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\security\SecurityConfig.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\District.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\InvoiceRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\UserEvaluation.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\CityRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\UserEvaluationRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\LegalCaseVO.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\User.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\UserLogin.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\Application.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\Compliance.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\CaseRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\BillingMaster.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\util\DateFormatUtils.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\DashboardCountDetail.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\RecourseAbbreviation.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\util\CaseFileManagementService.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\response\StateResponse.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\RoleRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\ActiveUserDashboard.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\UserSubscriptionRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\RecourseAbbreviationRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\ExportVO.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\StageRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\controller\EventController.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\controller\MasterManagementController.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\Manager.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\UserDocumentTemplate.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\util\EmailService.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\Branch.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\ComplianceStageRecourse.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\DocumentTemplate.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\response\BranchResponse.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\LegalCaseDashboard.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\UserRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\InvoiceHeader.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\controller\InvoiceController.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\Recourse.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\ComplianceRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\BillingMasterRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\controller\DashboardController.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\service\impl\CaseServiceImpl.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\City.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\util\WebRestControllerAdvice.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\State.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\DocumentTemplateRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\util\CustomQuery.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\Employee.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\UserType.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\Billing.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\DistrictRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\service\S3Services.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\entities\Institution.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\response\InstitutionResponse.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\response\LegalFriendResponse.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\StatusRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\controller\SwaggerConfig.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\InvoiceTemplateRepository.java
-D:\POC\srcslegalnew\LegalFriend\legalfrienddao\src\main\java\com\legalfriend\repository\UserRegistrationRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/response/IndividualBillingResponse.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/IndividualBillingMaster.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/LegalCase.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/Employee.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/Organization.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/District.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/StageRecourse.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/security/TokenAuthenticationService.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/controller/UserMangementController.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/Manager.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/StageRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/AgainstInstitutionalCaseCompliance.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/security/JwtTokenMissingException.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/service/impl/UserServiceImpl.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/service/BillingService.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/CaseFilesRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/service/impl/BranchServiceImpl.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/UserClient.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/service/S3ServicesImpl.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/response/CityResponse.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/CaseRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/controller/NotificationController.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/service/InvoiceService.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/util/DateFormatUtils.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/controller/InvoiceTemplateController.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/Court.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/Notification.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/enums/UserRole.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/CaseFileDetails.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/CaseFiles.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/security/AuthorizationServerConfig.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/CaseComplianceRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/InstitutionRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/NotificationRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/ActiveUserDashboard.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/CaseCompliance.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/SubscriptionRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/response/StageResponse.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/UserResponse.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/UserRole.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/controller/DashboardController.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/UserLoginRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/response/InstitutionResponse.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/RoleRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/util/CustomQuery.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/enums/Subscription.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/BillingRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/UserType.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/DocumentTemplateRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/CsvToCaseFileDetailsMappingBean.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/RecourseRequestRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/UserDetailVO.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/security/AppUserDetailsService.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/UserAddress.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/InvoiceTemplate.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/enums/ComplianceStatus.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/AgainstInstitutionalCaseRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/UserRelationship.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/controller/BillingController.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/UserLogin.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/UserEvaluation.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/CityRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/response/RecourseResponse.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/UserPasswordLoginRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/controller/ReferralController.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/CourtRequest.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/security/SecurityConfig.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/CustomerType.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/response/BillingResponse.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/RecourseRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/util/EmailService.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/LoginTrack.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/response/StageRecourseResponse.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/AgainstInstitutionalCase.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/ForInstitutionalCaseComplianceRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/Branch.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/util/EmailServiceImpl.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/ForInstitutionalCaseCompliance.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/config/DatabaseConfig.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/controller/SwaggerConfig.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/CourtRequestRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/StageRequest.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/security/JwtAuthenticationToken.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/User.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/controller/EvaluationController.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/InvoiceRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/service/S3Services.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/Institution.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/EventRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/config/S3Config.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/State.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/response/DistrictResponse.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/InvoiceNumber.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/response/InvoiceResponse.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/service/impl/InvoiceServiceImpl.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/controller/CaseFilesManagementController.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/UserDocumentTemplate.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/util/EventServiceImpl.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/controller/InvoiceController.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/security/AccountCredentials.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/Status.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/security/JWTLoginFilter.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/controller/CaseController.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/StageRequestRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/UserRoleRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/UserPasswordToken.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/UserSubscription.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/UserRegisterToken.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/Invoice.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/CourtRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/UserRegistrationRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/response/LegalFriendResponse.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/InvoiceTemplateRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/service/BranchService.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/UserTypeRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/ExportVO.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/LegalCaseDashboard.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/service/ForInstitutionalCaseService.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/Referral.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/IndividualBilling.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/controller/MasterManagementController.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/service/AgainstInstitutionalCaseService.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/BillingMaster.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/response/ComplianceStageRecourseResponse.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/UserSubscriptionRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/service/impl/ForInstitutionalCaseServiceImpl.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/InvoiceHeader.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/service/CaseService.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/controller/GeneralController.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/ForInstitutionalCase.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/DistrictRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/SystemDashTiles.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/DashReport.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/DocumentTemplate.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/RecourseRequest.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/response/ComplianceResponse.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/service/EventServiceImpl.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/RecourseAbbreviationRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/UserRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/ComplianceStatusRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/config/Messages.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/response/CourtResponse.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/StateRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/service/impl/CaseServiceImpl.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/DashboardCountDetail.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/NotificationTypeRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/service/impl/BillingServiceImpl.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/ForInstitutionalCaseRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/StatusRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/controller/EventController.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/AgainstInstitutionalCaseComplianceRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/config/AuditableConfiguration.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/DashboardReport.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/City.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/ComplianceRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/UserCases.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/Event.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/LoginTrackRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/ComplianceStageRecourse.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/UserRelationshipRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/Recourse.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/Application.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/UserPassword.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/ReferralRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/BranchRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/Auditable.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/SubscriptionMaster.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/util/DashboardReportUtil.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/ComplianceStatus.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/util/WebRestControllerAdvice.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/NotificationType.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/LegalCaseVO.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/RecourseAbbreviation.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/enums/InvoiceStatus.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/UserEvaluationRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/service/UserService.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/BillingMasterRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/controller/DocumentTemplateController.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/cron/ScheduleJob.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/Stage.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/security/JwtAuthenticationTokenFilter.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/Compliance.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/InvoiceFooter.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/service/impl/AgainstInstitutionalCaseServiceImpl.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/IndividualBillingMasterRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/util/CsvFileReader.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/response/EventResponse.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/TrialOrganization.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/IndividualBillingRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/Mail.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/response/StateResponse.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/response/BranchResponse.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/Billing.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/util/CaseFileManagementService.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/entities/Role.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/repository/InvoiceNumberRepository.java
+/Users/moulick.aggarwal/For_Kapil_Maheshwari/Legal/App/LegalFriend backend/legalfrienddao/src/main/java/com/legalfriend/service/EventService.java
